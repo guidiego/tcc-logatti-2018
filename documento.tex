@@ -1,0 +1,202 @@
+\documentclass[
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	twoside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel.
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil				% o último idioma é o principal do documento
+	]{abntex2}
+
+
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+\usepackage{lipsum}				% para geração de dummy text
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
+
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+
+\titulo{Aplicação de inteligencia artificial na identificação e classificação de perfis depressivos em redes sociais.}
+\autor{Guilherme Diego Albino Francisco}
+\local{Araraquara}
+\data{Fevereiro 2018}
+\orientador{Cristina Cibeli Vidotti Ivo de Medeiros}
+\instituicao{%
+  Faculdades Integradas de Araraquara e Região - Logatti
+  \par
+  Faculdade de Sistemas de Informação
+  \par
+  Bacharelado}
+\tipotrabalho{Tese (Bacharelado)}
+\preambulo{Modelo canônico de trabalho monográfico acadêmico em conformidade com
+as normas ABNT apresentado à comunidade de usuários \LaTeX.}
+
+\definecolor{blue}{RGB}{41,5,195}
+
+
+\makeatletter
+\hypersetup{
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={ia}{inteligencia artificial}{depressão}{machine learning}{datascience},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+
+\makeindex
+
+\begin{document}
+
+\selectlanguage{brazil}
+\frenchspacing
+\imprimircapa
+\imprimirfolhaderosto*
+
+
+% \begin{agradecimentos}
+% \end{agradecimentos}
+% % ---
+
+
+
+% \setlength{\absparsep}{18pt}
+% \begin{resumo}
+
+% \end{resumo}
+
+% \pdfbookmark[0]{\listfigurename}{lof}
+% \listoffigures*
+% \cleardoublepage
+
+% \pdfbookmark[0]{\listtablename}{lot}
+% \listoftables*
+% \cleardoublepage
+
+
+% \pdfbookmark[0]{\contentsname}{toc}
+% \tableofcontents*
+% \cleardoublepage
+
+
+\textual
+
+
+\chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{chapter}{Introdução}
+
+Nos dias atuais a depressão é um assunto cada vez mais recorrente e relevante na sociedade, porém os estudos sobre tal transtorno já é algo antigo. Um dos marcos do estudo da depressão foi quando Freud publicou sua obra \textit{“Mourning and Melancholia”} em 1916. Desde as primeiras citações sobre melancolia e depressão os avanços nas áreas de psicologia e psiquiatria fizeram com que o assunto conquistasse cada vez mais espaço e visibilidade entre as pessoas. Hoje no Brasil temos uma média de 11 milhões de brasileiros afetados por esse transtorno \cite{paho2017-letstalk}.
+
+Analisar um paciente com taxas de depressão é uma tarefa comum para um psicólogo ou psiquiatra. A forma com que as pessoas utilizam recursos como fala e escrita deixam traços que podem ser utilizados para analisar padrões emocionais e comportamentais. Na escrita a construção de uma frase já é o suficiente para dizer muito sobre a pessoa. Existem vários estudos que analisam discursos em prol de achar padrões emocionais. A escrita esta presente todos os dias em nosso cotidiano, principalmente depois da ascensão das redes sociais quando o jeito que nos expressamos publicamente se tornou mais simples.
+Graças aos compartilhamentos em redes sociais, a quantidade de conteúdo disponível vem apenas aumentando, basta um rápido acesso a um perfil para mapearmos informações pessoais, sejam elas exatas como nome, idade, endereço e até familiares ou conteúdos mais abstratas como gostos musicais e literários. Todo esse ápice tecnológico que começou a aproximadamente quatro anos atrás deu inicio a era dos dados, assim, os transformando em moeda de troca. Empresas como Facebook, Google, Uber e Airbnb ganharam o mercado exatamente por conseguirem coletar os dados importantes e administra-los em forma de soluções para seus usuários.
+
+Obviamente outras pessoas se aproveitaram desse momento e começaram a utilizar de dados públicos para fazer ferramentas voltadas para analise de mercado e tomada de decisão. Isso se deve a facilidade em mapear visitações, curtidas, compartilhamentos e até publicações opinando sobre algum produto ou serviço. Aplicar a mesma lógica para analisar um perfil e tentar descobrir se a pessoa tem algum índice de depressão é um pouco mais complexo.
+
+A resposta mais lógica para mapear perfis com depressão é chamar especialistas para analisar os perfis e gerar então os dados desejados. O maior problema, que se repete em quase todo processo que é automatizado, é o fator humano. Para analisarmos uma quantidade de dados satisfatória seria necessário um numero de profissionais muito grande, sem contar a logística para registrar esses dados e manter-los consistentes. 
+
+Por outro lado, a maquina é racional e lógica. Nesse caso analise de dados abstratos como textos, só seriam possíveis com aprendizado de maquina. Ainda assim teríamos outro problema que é o fator da saúde mental, analisar dados quando o contexto tem pouca variação como em “gostei de x” ou “odiei y”, onde a maior barreira poderia ser o sarcasmo, é bem diferente de analisar uma frase como “Queria estar morta”, onde além do sarcasmo existe a chance da mesma representar um estado emocional ou simplesmente um meme\footnote{Uma imagem, video, ou frase, normalmente de humor, transmitida por usuários na internet. Um elemento cultural transferido por meios não genéticos. - Oxford Dictionarie: https://en.oxforddictionaries.com/definition/meme}.
+
+A proposta da pesquisa é utilizar de dados públicos do Twitter para coletar perfis e suas respectivas postagens recentes. Em seguida, criar uma base de conhecimento com índices de depressão e palavras chaves a partir dos dados coletados, para isso será implementado um sistema capaz de recolher as analises de psicólogos e psiquiatras e através de funções auxiliares gerar as informações necessárias. Por último, sera utilizado essa base de conhecimento para treinar uma rede neural afim de que ela seja capaz de replicar as analises dos profissionais, fazendo assim, com que a maquina seja capaz de identificar índices de depressão autonomamente. Para a pesquisa, foi selecionado o paradigma funcional em cima de linguagens como Javascript, Python e Golang para construção do softwares e \textit{scripts} responsáveis pelo funcionamento do sistema. Além disso o banco utilizado será o MongoDB para armazenar nosso conjunto de dados pela alta performance em leitura e indexação de dados.
+
+% \part{Preparação da pesquisa}
+% \part{Referenciais teóricos}
+
+
+\chapter{Inteligencia Artificial}
+Inteligência é, por definição, uma coleção sistemática de habilidades e funções com objetivo de processar diferentes tipos de informações de diversas maneiras \cite[49]{guilford1982cognitive}. Simular as "coleções sistemáticas" descritas afim de criar entidades inteligentes é o foco da inteligencia artificial \cite[1]{russell2003artificial}. Varias abordagens por diferentes pesquisadores foram utilizadas desde que a inteligencia artificial passou a ser um campo de estudo, os métodos se auto-contribuíram até nos levar ao estado atual da IA. \cite[2]{russell2003artificial}.
+
+O objetivo desse capitulo é introduzir noções básicas e fundamentos da IA, incluindo aprendizado de maquina e processamento de linguagem natural, que serão utilizadas ao decorrer da pesquisa.
+
+\section{Modelagem Cognitiva e a Abordagem de Turing}
+Um sistema de símbolos físicos possui os meios necessários e suficientes para realizar ações inteligentes de maneira geral \cite[116]{newell1976ComputerSA}, o nosso dialeto é uma exemplificação disso. A primeira área cognitiva do ser humano é a capacidade se obter descrições de forma simplificada através da linguagem \cite[131]{putnam1975mind}. Mas seria possível uma maquina pensar como nós e entender as mesmas descrições? Esse foi o questionamento inicial de Turing, a partir disso ele propôs o \textit{Imitation Game},que anos após se tornaria o famoso Teste de Turing. Além disso, algumas diretrizes para construção da maquina capaz de passar em seu teste e objeções a suas próprias afirmações foram dadas. Duas dessas objeções seriam o tamanho finito do armazenamento das maquinas seguido da explicação que apenas reconhecer frases, buscar a informação necessária e levá-la ao usuário não seria o suficiente para passar no teste, as maquinas teriam que ser capazes de guardar instruções e se aprimorar do mesmo modo que um ser humano, assim, seria possível conseguir se adaptar a novas situações \cite[144-155]{turing1950}. Logo, questionar se uma maquina pode pensar é o mesmo que questionar se um submarino pode nadar, essa frase foi utilizada por Dijsktra \cite{dijkstra898} ao explicar que um submarino nunca realizaria o ato de nadar, porem, continuaria executando seu objetivo e propósito da melhor maneria possível.
+
+Quando foi proposto à máquina entender um conjunto de texto e responder corretamente a isso \cite[146]{turing1950}, entramos indiretamente no campo da linguística. A gramática nada mais seria do que um conjunto finito ou infinito de sentenças e um numero finito de fonemas ou letras em seu alfabeto. Pensando como uma máquina, esse conjunto de regras seguiria um estado racional e a troca ou inserção de fonemas durante a troca de estados poderia mudar o sentido da frase em questão \cite[13-16]{chomsky2002syntactic}. Partindo desse principio o que impediria o computador de entender o que lhe foi dito? Mesmo parecendo óbvio, entender palavras não significa entender o contexto, é necessário se familiarizar com o ambiente e o momento afim de idealizar o que está sendo transmitido. Essa conexão entre elementos é tratada no estudo do \textit{connectivism}\footnote{Integração dos princípios de rede, caos, complexidade e teorias de auto-organização. Seu objetivo é entender decisões baseado nas mudanças de componentes fundamentais \cite[5]{siemens2014connectivism}.}. De acordo com a linha de pensamento, estabelecida pelo estudo, os neurônios seriam os agentes cognitivos responsáveis por planejar, construir e representar essas informações que nosso cérebro recebe \cite[22]{brandura1996}. Mesmo com toda essa relevância o assunto não tinha tanta visibilidade até o nascimento  do campo hibrido chamado de Processamento de Linguagem Natural. \cite[16]{russell2003artificial}
+
+Outra área afetada foi a psicologia, descrita como a ciência da saúde mental, capaz de analisar os desejos, sentimentos, razões, decisões dentre outras faculdades mentais afim de entender o posicionamento e estado emocional do ser. \cite[4-6]{william1890principles}. O ato de entender como animais e humanos pensavam e agiam levou a psicologia, chamada aqui de cognitiva, a estudar o cérebro como um fonte de processamento de informações antes mesmo do artigo publicado por Turing. O primeiro modelo psicológico surgiu em 1958, foi proposto algumas experiencias baseadas na recente popularidade e divergência da língua, além do poder humano de realizar tarefas simultâneas, nesse caso, a possibilidade de um cadeia de eventos físicos cancelar ou não uma outra. \cite[4-7]{broadbent1958perception}. Em 1961 foi proposto em um artigo que se comparasse um programa capaz de realizar diversas tarefas com a mente humana afim de aprimorar os conceitos estudados dentro da Inteligencia Artificial \cite[110]{newell1961gps}.
+
+Durante essa mesma época, em 1956, foi proposto que a quantidade de informações a serem referenciadas seria uma das maiores dificuldades em entender as relações entre as variantes \cite[81-82]{miller1956magical}, de acordo com Russel \cite[13]{russell2003artificial} o inicio do campo da Ciência Cognitiva ocorreu no \textit{workshop} onde esse artigo foi publicado. Essa parceria entre as áreas de computação e psicologia trouxeram grandes avanços ao juntar modelos computacionais com teorias experimentais de psicologia, essa abordagem causou divergências entre estudiosos que discutiam se esse modelo ou um algorítimo performariam melhor na execução de uma tarefa. \cite[3]{russell2003artificial}. O campo da Ciência Cognitiva,  que tinha vasta abrangência como é possível vislumbrar em \textit{“The MIT encyclopedia of the cognitive science”} \cite{wilson2001encyclopedia} que reuniu seis diferentes áreas para abordar o tema, ganhou tração.
+
+Logo para passar no Teste de Turing, seria necessário criarmos uma maquina capaz de aprender e se adaptar a diversas situações usando Processamento de Linguagem Natural e Referencias de Conhecimento para entender o que foi requisitado além de um algorítimo capaz de automaticamente tomar decisões baseados nos dados fornecidos. \cite[2]{russell2003artificial}. Todas essas etapas podem ser/ou não solucionadas com agentes, que serão explicados a seguir.
+
+\section{Leis do Pensamento e Agentes Racionais}
+
+Racional é algo baseado ou acordado com uma razão ou lógica\footnote{Oxford Dictionarie:  https://en.oxforddictionaries.com/definition/rational}, existem dois pilares para a lógica: a Conversão responsável por expressar a mesma proposição em diferentes formas e o Silogismo responsável por localizar um termo em comum que conecte duas dessas proposições. \cite[175]{boole1854investigation}.
+
+\textit{Law of thought} (lei do pensamento) é uma lei psicológica que acompanha um processo mental, logo, necessita estar de acordo com uma razão ou lógica \cite[289-291]{frege1956thought}. Para as pessoas a lógica parece ser algo extremamente banal, porem, a teoria por trás do que é logico e o que é racional é algo bem extenso. Desde a Grécia antiga filósofos e/ou matemáticos estudam o conceito de lógica. \cite[4-5]{russell2003artificial}. Durante todo esse período varias escolas nos proporcionaram diversas visões sobre o assunto. O racionalismo por exemplo, visa que podemos adquirir conhecimento independente da nossa experiencia sensorial \cite{rationalismvsempiricism}. Dentro dessa ideia nasceram o dualismo, onde afirmamos que nossa mente é algo natural e sem conhecimento do mundo externo \cite[7]{descartes2013rene}, e o materialismo, que contrariando o dualismo afirma que a mente é formada pelas operações do nosso cérebro \cite[6]{russell2003artificial}.
+Em contradição com o racionalismo, existe o empirismo, onde a experiencia sensorial é a fonte final de conhecimento \cite{rationalismvsempiricism}.
+
+
+Para que se torne possível realizar ações racionais é necessário entender o ambiente aonde você esta e suas variáveis \cite[99]{simon1955behavioral}. Diferente do que muitos pensam o estudo da economia se trata de dinheiro porem se trata de como guiamos nossas decisões baseadas nos retornos esperados. Os estudos da economia dentro da IA ainda se aplicam a questões como como devemos agir quando o que esperamos esta em um futuro distante ou então se devemos continuar quando outros fatores não continuarem a nos favorecer \cite[9]{russell2003artificial}. A ação racional descrita é feita por um agente, que é descrito como autônomo e racional, uma vez que não necessita diretamente de um humano para agir e é construído com propósito de retirar a melhor performance com base em seu objetivo \cite[2]{ wooldridge1994agent}.
+
+Esse agente esta dentro de um ambiente, é necessário que esteja claro o que pode ou não ser computado, quais são as regras que podemos aplicar e principalmente como conseguimos obter algo racional em caso informações incertas \cite[7]{russell2003artificial}. Os princípios matemáticos aplicados aqui partem das pequisas em cima das proposições, para que seja possível deduzir uma proposição não é necessário apenas inferência, em alguns casos, é necessário que esses dados sejam convertidos a fatores numéricos, afim de utilizar funções aritméticas para resolver os problemas \cite[2-4]{boole1854investigation}. Além disso, existe a probabilidade, em pouco tempo sua capacidade de resolver teoremas inacabados e ajudar a mensurar problemas a tornou indispensável para a IA \cite[9]{russell2003artificial}.
+ 
+Em resumo o agente recebera um \textit{input}\footnote{Entrada de dados} e será responsável por gerar um \textit{output}\footnote{Dado de Saída}, ao longo do tempo o mesmo agente gerara múltiplas percepções e essas formarão uma sequencia de percepções\footnote{Não serão todos os modelos que seguirão a proposta sequencial, existem casos em que a linha temporal não afeta o desenvolvimento da decisões tornando-as episódicas}. \cite[34-35]{russell2003artificial} Existem definições dadas aos agentes racionais, iremos definir algumas delas a seguir \cite[42-45]{russell2003artificial}:
+
+\begin{itemize}
+ \item \textbf{Totalmente, parcialmente ou não observador:} essa definição é gerada pela quantidade de fatores do ambiente que seu agente recebe, um agente que tem todas as informações do ambiente é totalmente observador enquanto um que não recebe nada, precisando assim manter alguns estados, é não observador.
+ \item \textbf{Estocástico ou Determinístico:} quando é impossível determinar o próximo estado através do anterior o agente é Estocástico, caso ao contrario ele é Determinístico.
+ \item \textbf{Episódicos ou Sequenciais:} já foi dito que em diversas abordagens são gerados sequencias de percepção, quando essa sequencia é alterado a partir de alguma mudança de estado chamamos o agente de sequencial, caso ao contrario o agente é Episódico.
+ \item \textbf{Estáticos ou Dinâmicos} essa definição é referente ao ambiente, quando nosso ambiente não infere alterações chamamos o agente de estático, caso ao contrario Dinâmico.
+ \item \textbf{Continuo ou Distinto:} Quando existem finitas possibilidades de estado pode se afirmar que o agente é Distinto, quando as possibilidades são infinitas é dado o nome de Continuo.
+ \item \textbf{Conhecido ou Desconhecido:} Quando o agente necessita aprender algo e não consegue realizar a ação por si só ele é um agente desconhecido, caso ao contrário ele é conhecido.
+\end{itemize}
+
+Para que seja possível definir se o agente está ou não gerando os dados esperados é necessário medir sua performance, então, é necessário que analisar o ambiente gerado a partir das percepções e conferir se os dados são os esperados ou não \cite[294-295]{frege1956thought}.
+
+\section{Fundamentos da Inteligencia Artificial}
+
+Psicologia, Linguística, Economia, Filosofia e Matemática, esses são alguns dos fundamentos abordados até então. É possível entender o conceito por trás da inteligencia, porem, para que a IA seja bem sucedida e necessário um artefato, e esse artefato tem sido o computador. A engenharia da computação é um outro fundamento, que até agora foi tratado implicitamente, seu foco é construir maquinas eficientes, sendo assim, além dos hardwares, novos sistemas operacionais, linguagens e ferramentas surgiram fortalecendo o campo de IA \cite[13-14]{russell2003artificial}.
+
+A cibernética e a teoria de controle é um outro fundamento da IA, o conceito por trás desse fundamento foi criado por em 1961 por Wiener \cite[15]{russell2003artificial}. Muitas vezes é necessário que a maquina tenha conhecimento de fatores externos, que usualmente não pode ser transmitido pela ausência de transmissores de informação humanos, como olhos, ouvidos e boca. Se esses estímulos são tão relevantes seria necessário que de forma elétrica fossem criados sensores capazes de controlar essas informações e integrar com os softwares de maneira que passassem dados numéricos e não exatamente seus sentimentos em relação a algo \cite[3-7]{wiener1961cybernetics}. Diferente dos demais, esse fundamento não impacta nossa pesquisa, logo, não será aprofundado como os demais.
+
+A neurociência, é responsável por estudar o nosso cérebro, ou sendo mais exato, como nossas redes neurais funcionam, e é o ultimo fundamento abordado. \cite[10]{russell2003artificial}. A biologia em si era em grande parte descritiva, propor um modelo matemático para o funcionamento de um cérebro vislumbraria em entender o metabolismo como centro de transmissão e calcular a forças emitidas durante esse processo, para que então, fosse transformar a ação ocorrida em um cérebro humano em uma função aritmética \cite[1-3]{rashevsky1960mathematical}. Criar entidades mais inteligentes necessitária de avanços em campos externos ao de computação, como a biologia, para entender se é possível maximizar a inteligencia humana, outras definições como até onde entidades ficariam mais inteligentes, como implementar interfaces para suportar algo talvez superior a inteligencia humana ou então aumentar a capacidade de nossos computadores para que eles fossem capazes de suprir o potencial de um cérebro dependeriam em grande parte de avanços de hardware \cite[1-2]{vinge1993coming}. Mesmo com tantas discussões em torno do assunto, a proposta de singularidade de Vinge não tem uma comparação informativa, e mesmo que fossemos capaz de ter memória e processamento infinito ainda não é possível entender como armazenar e replicar os padrões encontrados na neurociência \cite[11-12]{russell2003artificial}. Os estudos cognitivos tornaram possível entender melhor o funcionamento da mente humana; o método racional e a proposta de pensar nos meios que nos levam a um fim fez com que fosse capaz de abstrair modelos inteligentes através de agentes; a neurociência, por sua vez, nos deu a magnitude de como transmitir conhecimento e aprimorar os modelos, o fator inteligencia e aprendizado passaram a ser mais vistos dentro do ramo de IA, e nos levaram para ascensão da aprendizagem de máquina.
+
+\section{Aprendizagem de Máquina}
+Desenvolver.
+
+\postextual
+\bibliography{references}
+
+
+% \begin{apendicesenv}
+% \partapendices
+% \end{apendicesenv}
+
+
+% \begin{anexosenv}
+% \partanexos
+% \end{anexosenv}
+
+
+\phantompart
+\printindex
+
+\end{document}
