@@ -3,12 +3,12 @@
 
 Para realizar as ações descritas por Turing, precisamos entender seus processamentos de forma racional e lógica afim de replica-los para a maquina. A abordagem de \textbf{agentes racionais} é uma das possibilidades a serem usadas. O termo \textbf{racional} significa algo baseado ou acordado com uma razão ou lógica, de outro lado, a lógica tem dois pilares: a \textbf{conversão} responsável por expressar a mesma proposição em diferentes formas e o \textbf{silogismo} responsável por localizar um termo em comum que conecte duas dessas proposições. Um agente é algo que age, ou seja, um agente racional seria quem analisa circustancias utilizando de definições lógicas e racionais a fim de interagir com algo. Isso é afirmado pela definiçao de Russel, onde um agente racional percebe modificações no ambiente, através de sensores, e interage de volta com o ele novamente através de atuadores, pode-se notar esse fluxo na figura \ref{fig:rational_agent_draw}. Logo, podemos afirmar, que para ser possível realizar ações racionais é necessário entender o ambiente aonde você esta e suas variáveis, alias, é necessário que esteja claro o que pode ou não ser computado, quais são as regras que podemos aplicar e principalmente como conseguimos obter algo racional em caso informações incertas. \cite[7]{frege1956thought, wooldridge1994agent, simon1955behavioral, boole1854investigation, russell2003artificial}
 
-\begin{figure*}
+\begin{figure}
     \centering
     \includegraphics[width=.8\textwidth]{imagens/rational_agent_draw.png}
     \caption{Fluxo executado por um agente racional}
     \label{fig:rational_agent_draw}
-\end{figure*}
+\end{figure}
 
 Definir se o agente está ou não gerando os dados esperados é um dos passos durante o desenvolvimento e incrementação dos agentes. É necessário que analisar o ambiente gerado a partir das percepções e conferir se os dados são os esperados ou não, essa etapa chama-se \textbf{mensuração de performance}. Resumidamente, o agente recebera um entrada de dados e será responsável por gerar um saída, ao longo do tempo o mesmo agente gerara múltiplas percepções e essas formarão uma sequencia de percepções \footnote{Não serão todos os modelos que seguirão a proposta sequencial, existem casos em que a linha temporal não afeta o desenvolvimento da decisões tornando-as episódicas}. Existem definições dadas aos agentes racionais, iremos definir algumas delas a seguir \cite[34-45]{russell2003artificial}:
 
