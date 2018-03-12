@@ -1,11 +1,32 @@
 \subsection{Algoritmos de Aprendizado de Máquina}
-Os atributos presentes nos dados podem ser utilizados com a premissa de predizer uma determinada hipótese. O ato de coletar um conjunto de dados para treino baseados em entra-saída e, posteriormente, utiliza-lo para predizer uma ou mais hipóteses é nomeado \textbf{aprendizagem supervisionada}, vide figura 3. Usualmente dentro da aprendizagem supervisionada existe um método que consiste em utilizar de um atributo discreto ou qualitativo e a partir de um indutor gerar o melhor classificador para aquele problema, esse método é chamado \textbf{classificação}. Ainda existe um outro, que se baseia em atributos contínuos\footnote{todo}, com isso é possível utilizar de predição numérica afim de identificar um modelo dentro do plano cartesiano e prever futuros valores para o mesmo atributo em outras situações, esse método se chama \textbf{regressão}. \cite{hastie2009unsupervised, russell2003artificial}
+Os atributos presentes nos dados podem ser utilizados com a premissa de predizer uma determinada hipótese. O ato de coletar um conjunto de dados para treino baseados em entra-saída e, posteriormente, utiliza-lo para predizer uma ou mais hipóteses é nomeado \textbf{aprendizagem supervisionada}, vide \ref{fig:supervisedlearning}. Usualmente dentro da aprendizagem supervisionada existe um método que consiste em utilizar de um atributo discreto ou qualitativo e a partir de um indutor gerar o melhor classificador para aquele problema, esse método é chamado \textbf{classificação}. Ainda existe um outro, que se baseia em atributos contínuos\footnote{todo}, com isso é possível utilizar de predição numérica afim de identificar um modelo dentro do plano cartesiano e prever futuros valores para o mesmo atributo em outras situações, esse método se chama \textbf{regressão}. \cite{hastie2009unsupervised, russell2003artificial}
 
-Em contrapartida, existem casos onde os atributos não estarão anotados e a IA terá que literalmente inferir a probabilidade em toda a base. Esse estilo de aprendizagem se chama \textbf{aprendizagem não-supervisionada}, e o enfoque é utilizar da segregação dos atributos e suas dimensões para inferir resultados. O método mais comum dentro desse estilo é a \textbf{clusterização} que, em resumo, se baseia em particionar os dados em grupos dentro de um plano cartesiano tomando de referencia um atributo. Outra pratica utilizada nesse tipo de aprendizagem é \textbf{redução dimensional}, onde resume-se o estado atual de um item para um estado de menor complexidade de dimensões com base nas propriedades chaves \cite{hastie2009unsupervised, mohri2012foundations}.
+Em contrapartida, existem casos onde os atributos não estarão anotados e a IA terá que literalmente inferir a probabilidade em toda a base. Esse estilo de aprendizagem se chama \textbf{aprendizagem não-supervisionada}, e o enfoque é utilizar da segregação dos atributos e suas dimensões para inferir resultados, exemplificado na \ref{fig:unsupervised}. O método mais comum dentro desse estilo é a \textbf{clusterização} que, em resumo, se baseia em particionar os dados em grupos dentro de um plano cartesiano tomando de referencia um atributo. Outra pratica utilizada nesse tipo de aprendizagem é \textbf{redução dimensional}, onde resume-se o estado atual de um item para um estado de menor complexidade de dimensões com base nas propriedades chaves \cite{hastie2009unsupervised, mohri2012foundations}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{imagens/supervisedlearning.png}
+    \caption{Diagrama representando os eventos da aprendizagem supervisionada. Fonte: o autor.}
+    \label{fig:supervisedlearning}
+\end{figure}
 
 Ainda correlacionado com as últimas explicações, existe um tipo onde é inserido no agente dados anotados e não anotados para predição de todos os itens da base. A \textbf{aprendizagem semi-supervisionada}, sucintamente definida, é a mescla das duas outras aprendizagens. Utiliza da parte anotada (supervisionada) e da lógica de grupos (não-supervisionada), para normalizar e otimizar o resultado final \cite[7]{mohri2012foundations}.
 
-Por último, existem casos onde não teremos dados suficientes para executar outros tipos de aprendizagem, nesse momento a aprendizagem baseada na tradicional tentativa e erro. Nomeada \textbf{aprendizado por reforço}, se observar a figura:3 pode-se notar que se, consiste em um \textbf{ambiente} (A), responsável por emitir um estado para o \textbf{componente} (C), feito isso o é aplicado uma \textbf{entrada de dados} (e) ao nosso \textbf{agente} (G) que será responsável por tomar a decisão de que \textbf{ação} (a) tomara para a entrada recebida. Essa ação modifica o estado do ambiente e transmite um sinal de reforço visando através do componente (r) para que a aplicação tome a melhor escolha ao longo prazo \cite{kaelbling1996reinforcement, russell2003artificial}.
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{imagens/unsupervised.png}
+    \caption{Diagrama representando os eventos da aprendizagem não supervisionada. Fonte: o autor.}
+    \label{fig:unsupervised}
+\end{figure}
+
+Por último, existem casos onde não teremos dados suficientes para executar outros tipos de aprendizagem, nesse momento a aprendizagem baseada na tradicional tentativa e erro. Nomeada \textbf{aprendizado por reforço}, se observar a \ref{fig:reinforcement} pode-se notar que se, consiste em um \textbf{ambiente} (A), responsável por emitir um estado para o \textbf{componente} (C), feito isso o é aplicado uma \textbf{entrada de dados} (e) ao nosso \textbf{agente} (G) que será responsável por tomar a decisão de que \textbf{ação} (a) tomara para a entrada recebida. Essa ação modifica o estado do ambiente e transmite um sinal de reforço visando através do componente (r) para que a aplicação tome a melhor escolha ao longo prazo \cite{kaelbling1996reinforcement, russell2003artificial}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.8\textwidth]{imagens/reinforcement.png}
+    \caption{Diagrama apresentando o modelo sequencia ocorrido durante a aprendizagem por reforço. Fonte: o autor.}
+    \label{fig:reinforcement}
+\end{figure}
 
 Não será definido exemplos práticos desses algoritmos, durante nosso resultado e conclusão abordaremos a utilização de algumas das abordagens sugeridas dentro de nossa pesquisa e o motivo da escolha.
 
