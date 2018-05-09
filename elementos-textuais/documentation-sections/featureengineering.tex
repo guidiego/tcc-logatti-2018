@@ -1,0 +1,8 @@
+\section{Engenharia de Atributos}
+A escolha dos atributos, também intitulada popularmente como \textit{feature engineering}, é o ato mais importante durante a mineração de dados, por que é através desses atributos que maquinas irão aprender e dados poderão ser analisados. É válido destacar que essa sessão serve apenas para introduzir a razão dos atributos, seu detalhamento será dado durante a sua implementação.
+
+O primeiro atributo relevante aqui é o sentimento. Já que será abordado dimensões afetivas negativas, o sentimento expressado por uma frase tem um grande impacto como atributo. Entretanto, o sentido em uma frase pode ser mais fácil de ser extraído em textos concisos, ou seja, normalizar os textos é necessário.
+
+Um dos atributos utilizados aqui será o texto normalizado, para isso será utilizado um \textit{spacy}, uma biblioteca Python para remover palavras que oferecem apenas ruídos ao resultado. Além disso, também será tirada a arvore sintática, para que seja possível estabelecer padrões de discurso na IA, ou então, reconhecer certas palavras presentes em demais analises.
+
+Uma vez observado os nossos atributos, seria necessário erguer um sistema capaz de realizar tarefas e persistir esses dados em algum banco de dados. Porém, será utilizado nessa pesquisa uma ferramenta para gerenciar esses scripts que forneceram os atributos citados acima.
