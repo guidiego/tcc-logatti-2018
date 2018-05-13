@@ -1,13 +1,13 @@
 \chapter{Documentação}
-O objetivo da pesquisa é localizar pontos comuns entre usúarios portadores de afetividades negativas (stress, ansiedade e depressão) afim de caracterizar tais dimensões nesses perfis. Esse tipo de caracterização se asemelha muito com uma aprendizagem não supervisionada, logo, antes mesmo dessa caracterização é necessário mapearmos atributos que serão usados para isso fazendo-se necessário a identificação de usúarios com dimensões afetivas negativas primeiro.
+O objetivo da pesquisa é caracterizar dimensões afetivas negativas em perfis do twitter localizando pontos comuns entre usúarios portadores de afetividades negativas (stress, ansiedade e depressão) de mesmo nível. Esse tipo de processo se asemelha com a aprendizagem não supervisionada, logo, antes dessa etapa é necessário mapearmos atributos, sendo assim, é necessário a identificação de usúarios com dimensões afetivas negativas em primeiro momento.
 
-Como observado, existem vários passos para conclusão desse projeto, nossa estrutura de processamento contára com um processo de mineração e dois processos de inteligencia artificial afim de gerar dois modelos lógicos. O primeiro modelo responsavel por inferir valores da EADS em um perfil, e o segundo, de predizer a partir de dados do perfil a chance de ter algum nivel de afetividade especifico.
+Como observado, existem vários passos para conclusão desse projeto, nossa estrutura de processamento contára com um processo de mineração e dois processos de inteligencia artificial afim de gerar dois modelos lógicos. O primeiro modelo responsavel por inferir valores da EADS em um perfil, e o segundo, de predizer, a partir de dados do perfil, a probabilidade de existir um determinado nível de afetividade utilizando dados do perfil.
 
-O projeto por tras dessa pesquisa tem alguns outros pontos sociais envolvidos, que assim, tornam a área de atuação da pesquisa um pouco mais ampla, entretando nenhum desses pontos, exceto a utilização de profissionais capacidados para geração de alguns atributos em nossa base, impactam diretamentamente a \textit{performance} e por isso não serão detalhados. Logo essa documentação é voltada unicamente ao sistema que desenvolveremos.
+O projeto em geral tem alguns outros pontos sociais envolvidos, que assim, tornam a área de atuação da pesquisa um pouco mais ampla, entretando nenhum desses pontos, exceto a utilização de profissionais capacidados para geração de alguns atributos em nossa base, impactam diretamentamente a \textit{performance} e por isso não serão detalhados. Logo essa documentação é voltada unicamente ao sistema que desenvolveremos.
 
-Pode-se observar na figura 6, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda nossa base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias. O aparente terceiro núcleo, na realidade, é simplesmente um banco de dados integrado gerado pelo APPA dentro do Dumont e que será consumido pelo 14BIS posteriormente.
+Pode-se observar na figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda nossa base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias. O aparente terceiro núcleo, na realidade, é simplesmente um banco de dados embutido gerado pelo APPA dentro do Dumont e que será consumido pelo 14BIS posteriormente.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
     \includegraphics[width=.8\textwidth]{imagens/tecnologias.png}
     \caption{Desenho apresentando os núcleos do projeto}
@@ -16,15 +16,15 @@ Pode-se observar na figura 6, o sistema é divido em dois núcleos, o Dumont res
 
 Existem basicamente 5 técnologias em evidencia:
 \begin{itemize}
- \item Rust: Rust é uma linguagem altamente performatica, preza por custo zero em abstração, atua com excelencia em processamento paralelo e seu modelo de alocação de memória evita \textit{dataraces}\footnote{}
- \item Python: É a linguagem atual mais utilizada no mundo de Aprendizado de Máquina, sua simplicidade ja á torna simples de usar, porem, a quantidade de materiais, bibliotecas e artigos sobre o assunto á tornam nossa principal linguagem nesse projeto.
+ \item Rust: Rust é uma linguagem altamente performatica, preza por custo zero em abstração, atua com excelencia em processamento paralelo e seu modelo de alocação de memória evita \textit{dataraces}\footnote{O termo \textit{datarace} traduzido abertamente como corrida de dados é um termo muito utilizado em processamento paralelo e envolve a tentativa de uso de uma alocação de memória por diferentes partes do sistema em um mesmo periodo de tempo}.
+ \item Python: É a linguagem atual mais utilizada no mundo de Aprendizado de Máquina, sua simplicidade ja á torna simples de usar, porem, a quantidade de materiais, bibliotecas e artigos sobre PLN e Aprendizado de Máquina á tornam nossa principal linguagem nesse projeto.
  \item Node/Javascript: Node é o interpretador que permite com que rodemos o Javascript (linguagem originalmente de browser no servidor). A linguagem tem um grande ganho com integrações e será utilizada para consumir recursos vindos de APIs.
- \item Go: Go se asemelha muito com Rust, porem, tem um ambiente menos burocratico devido a seus diferentes objetivos. Go será nossa escolha para qualquer processo que necessite muito recurso de processamento devido sua atual exploração dentro da area de IA.
+ \item Go: Asemelha-se muito com Rust, porem, tem um ambiente menos burocratico devido a seus diferentes objetivos. Go será nossa escolha para qualquer processo que não envolva API ou PLN.
  \item RocksDB: O RocksDB é um banco chave valor criado e distribuido gratuitamente pelo facebook. É um banco altamente performatico para leitura e escrita.
- \item Docker: Docker é uma ferramenta para infra-estrutura, será utilizado para rodar nossa aplicação em containers e facilitar nosso \textit{deploy}\footnote{}.
+ \item Docker: Docker é uma ferramenta para infra-estrutura, será utilizado para rodar a aplicação em containers e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
 \end{itemize}
 
-Existira uma sessão explicando o funcionamento do APPA, e como serão desenvolvidos os scripts que ele ira gerenciar, tanto quanto a parte explicativa sobre nossa Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a figura 7, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco embutido. Tanto o Dumont quanto o 14BIS irão consumir os dados salvos, porem é responsabilidade do 14BIS consumi-los a fim de treinar nossa IA para gerar nossos modelos lógicos.
+Existira uma sessão explicando o funcionamento do APPA, e como serão desenvolvidos os scripts que ele ira gerenciar, tanto quanto a parte explicativa sobre nossa Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco embutido. Tanto o Dumont quanto o 14BIS irão consumir os dados salvos, porem é responsabilidade do 14BIS consumi-los a fim de treinar nossa IA para gerar nossos modelos lógicos.
 
 \begin{figure}
     \centering
@@ -33,7 +33,7 @@ Existira uma sessão explicando o funcionamento do APPA, e como serão desenvolv
     \label{fig:tcc_caso_de_uso}
 \end{figure}
 
-Para melhor entendimento a documentação será dividida em núcleos teóricos e práticos. Primeiramente será dado toda a descrição teórica sobre a escolha de atributos, e funcionamento das ferramentas que serão utilizadas no processo. Em seguida entratemos em núcleos mais práticos como a coleta e mineração, onde alem de explicar como rodar o Dumont, tambem serão explicados como e por que foram construidas essas partes do sistema. Como ja dito, a primeira etapa se consiste em entender nossos atributos.
+Para melhor entendimento a documentação será dividida em núcleos teóricos e práticos. Primeiramente será dado toda a descrição teórica sobre a escolha de atributos, e funcionamento das ferramentas que serão utilizadas no processo. Em seguida será detalhado os núcleos mais práticos como a coleta e mineração, onde alem de explicar como rodar o Dumont, tambem serão explicados como e por que foram construidas essas partes do sistema. Como ja dito, a primeira etapa se consiste em entender nossos atributos.
 
 \input{elementos-textuais/documentation-sections/featureengineering}
 \input{elementos-textuais/documentation-sections/appa}
