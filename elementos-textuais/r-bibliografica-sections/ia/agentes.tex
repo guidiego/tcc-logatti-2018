@@ -10,21 +10,21 @@ Logo, é possivel afirmar, que para ser possível realizar ações racionais é 
 \begin{figure}
     \centering
     \includegraphics[width=.8\textwidth]{imagens/rational_agent_draw.png}
-    \caption{Fluxo executado por um agente racional. Fonte: Russel}
+    \caption{Fluxo executado por um agente racional. Fonte: Russel, 2003, 35}
     \label{fig:rational_agent_draw}
 \end{figure}
 
-Definir se o agente está ou não gerando os dados esperados é um dos passos durante o desenvolvimento dos agentes. É necessário analisar o ambiente gerado a partir das percepções e conferir se os dados são os esperados ou não, essa etapa chama-se \textbf{mensuração de performance}. Resumidamente, o agente receberá um entrada de dados e será responsável por gerar um saída. Ao longo do tempo o mesmo agente gerara múltiplas percepções e essas formarão uma sequencia de percepções \footnote{Não serão todos os modelos que seguirão a proposta sequencial, existem casos em que a linha temporal não afeta o desenvolvimento da decisões tornando-as episódicas}.
+Definir se o agente está ou não gerando os dados esperados é um dos passos durante o desenvolvimento dos agentes. É necessário analisar o ambiente gerado a partir das percepções e conferir se os dados são os esperados ou não, essa etapa chama-se mensuração de performance. Resumidamente, o agente receberá um entrada de dados e será responsável por gerar um saída. Ao longo do tempo o mesmo agente gerara múltiplas percepções e essas formarão uma sequencia de percepções \footnote{Não serão todos os modelos que seguirão a proposta sequencial, existem casos em que a linha temporal não afeta o desenvolvimento da decisões tornando-as episódicas}.
 
 Existem vários tipos de agentes racionais, sendo definidos como \cite[34-45]{russell2003artificial}:
 
 \begin{itemize}
  \item Totalmente, parcialmente ou não observador: essa definição é gerada pela quantidade de fatores do ambiente que seu agente recebe, um agente que tem todas as informações do ambiente é totalmente observador enquanto um que não recebe nada, precisando assim manter alguns estados, é não observador.
  \item Estocástico ou Determinístico: quando é impossível determinar o próximo estado através do anterior o agente é Estocástico, caso ao contrario ele é Determinístico.
- \item Episódicos ou Sequenciais: já foi dito que em diversas abordagens são gerados sequencias de percepção, quando essa sequencia é alterado a partir de alguma mudança de estado chamamos o agente de sequencial, caso ao contrario o agente é Episódico.
- \item Estáticos ou Dinâmicos essa definição é referente ao ambiente, quando nosso ambiente não infere alterações chamamos o agente de estático, caso ao contrario Dinâmico.
+ \item Episódicos ou Sequenciais: já foi dito que em diversas abordagens são gerados sequencias de percepção, quando essa sequencia é alterado a partir de alguma mudança de estado o agente é chamado de sequencial, caso ao contrario o agente é Episódico.
+ \item Estáticos ou Dinâmicos essa definição é referente ao ambiente, quando o ambiente não infere alterações o agente é nomeado estático, caso ao contrario Dinâmico.
  \item Continuo ou Distinto: Quando existem finitas possibilidades de estado pode se afirmar que o agente é Distinto, quando as possibilidades são infinitas é dado o nome de Continuo.
  \item Conhecido ou Desconhecido: Quando o agente necessita aprender algo e não consegue realizar a ação por si só ele é um agente desconhecido, caso contrário ele é conhecido.
 \end{itemize}
 
-Porém, é necessário diferenciar um agente racional de um algoritmo de tomada de decisão. O fato é que um agente pode tomar uma decisão, porém ele não gera só uma solução, mas sim, a equação necessária para conseguir essa solução. Além disso, baseado em um sistema inteligente com múltiplos agentes racionais, fica-se o questionamento sobre o quão inteligente um agente isolado pode ser, e também, quantos agente são necessários para que eu consiga obter o conhecimento desejado. Essas questões levam a IA para o próximo passo: ensinar um sistema a coletar esses resultados.
+Porém, é necessário diferenciar um agente racional de um algoritmo de tomada de decisão. O fato é que um agente pode tomar uma decisão, porém ele não gera só uma solução, mas sim, a equação necessária para conseguir essa solução. Além disso, baseado em um sistema inteligente com múltiplos agentes racionais, fica-se o questionamento sobre o quão inteligente um agente isolado pode ser, e também, quantos agente são necessários para que a máquina consiga obter o conhecimento desejado. Essas questões levam a IA para o próximo passo: ensinar um sistema a coletar esses resultados.
