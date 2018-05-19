@@ -1,137 +1,233 @@
-\documentclass[
-	12pt,				% tamanho da fonte
-	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
-	twoside,			% para impressão em recto e verso. Oposto a oneside
-	a4paper,			% tamanho do papel.
-	english,			% idioma adicional para hifenização
-	french,				% idioma adicional para hifenização
-	spanish,			% idioma adicional para hifenização
-	brazil				% o último idioma é o principal do documento
-	]{abntex2}
+\documentclass[12pt,oneside,a4paper,chapter=TITLE, english, french,	spanish, brazil]{abntex2-logatti}
 
 
-\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
-\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
-\usepackage{lastpage}			% Usado pela Ficha catalográfica
-\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
-\usepackage{color}				% Controle das cores
-\usepackage{graphicx}			% Inclusão de gráficos
-\usepackage{microtype} 			% para melhorias de justificação
-\usepackage{lipsum}				% para geração de dummy text
-\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
-\usepackage[alf]{abntex2cite}	% Citações padrão ABNT
-\usepackage{float}
-
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
-\renewcommand{\backref}{}
-\renewcommand*{\backrefalt}[4]{
-	\ifcase #1 %
-		Nenhuma citação no texto.%
-	\or
-		Citado na página #2.%
-	\else
-		Citado #1 vezes nas páginas #2.%
-	\fi}%
-
-
-\titulo{Caracterização das dimensões afetivas negativas em perfis de redes sociais por meio de Inteligência Artificial.
-}
+\titulo{Caracterização das dimensões afetivas negativas em perfis de redes sociais por meio de Inteligência Artificial.}
+\curso{Sistemas de Informação}
 \autor{Guilherme Diego Albino Francisco}
-\local{Araraquara}
-\data{Fevereiro 2018}
-\orientador{Cristina Cibeli Vidotti Ivo de Medeiros}
-\instituicao{%
-  Faculdades Integradas de Araraquara e Região - Logatti
-  \par
-  Faculdade de Sistemas de Informação
-  \par
-  Bacharelado}
-\tipotrabalho{Tese (Bacharelado)}
-\preambulo{Modelo canônico de trabalho monográfico acadêmico em conformidade com
-as normas ABNT apresentado à comunidade de usuários \LaTeX.}
-
-\definecolor{blue}{RGB}{41,5,195}
-
-
-\makeatletter
-\hypersetup{
-		pdftitle={\@title},
-		pdfauthor={\@author},
-    	pdfsubject={\imprimirpreambulo},
-	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={ia}{inteligencia artificial}{depressão}{machine learning}{datascience},
-		colorlinks=true,       		% false: boxed links; true: colored links
-    	linkcolor=blue,          	% color of internal links
-    	citecolor=blue,        		% color of links to bibliography
-    	filecolor=magenta,      		% color of file links
-		urlcolor=blue,
-		bookmarksdepth=4
-}
-\makeatother
-
-\setlength{\parindent}{1.3cm}
-\setlength{\parskip}{0.2cm}  % tente também \onelineskip
-
-
-\makeindex
+\RG{40.741.310-8}
+\local{Araraquara - SP}
+\data{\MONTH\space / \the\year}
+\orientador[Orientadora:]{Cristina Cibeli Vidotti Ivo de Medeiros}
+\preambulo{Trabalho de Conclusão de Curso, apresentado às Faculdades Integradas de Araraquara, como requisito parcial para obtenção do título de Bacharel em }
 
 \begin{document}
 
-\selectlanguage{brazil}
-\frenchspacing
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+ \pretextual
+
+
 \imprimircapa
-\imprimirfolhaderosto*
+
+\folhaderosto
 
 
-% \begin{agradecimentos}
-% \end{agradecimentos}
-% % ---
 
-% \setlength{\absparsep}{18pt}
-% \begin{resumo}
+\newcommand{\listofgraficosname}{Lista de Gráficos}
+\newcommand{\graficoname}{Gráfico}
+\newfloat[chapter]{grafico}{logr}{\graficoname}
+\newlistof{listofgraficos}{logr}{\listofgraficosname}
+\newlistentry{grafico}{logr}{0}
 
-% \end{resumo}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
 
+
+\pagebreak
+\begin{dedicatoria}
+ Este trabalho é dedicado às crianças adultas que,\\
+    quando pequenas, sonharam em se tornar cientistas.
+\end{dedicatoria}
+
+
+\begin{agradecimentos}
+Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
+Leslie H. Watter, Bruno Parente Lima, Flávio de Vasconcellos Corrêa, Otavio Real
+Salvador, Renato Machnievscz e todos aqueles que
+contribuíram para que a produção de trabalhos acadêmicos conforme
+as normas ABNT com \LaTeX\ fosse possível.
+
+\end{agradecimentos}
+
+
+\begin{epigrafe}
+``Não vos amoldeis às estruturas deste mundo, \\
+		mas transformai-vos pela renovação da mente, \\
+		a fim de distinguir qual é a vontade de Deus: \\
+		o que é bom, o que Lhe é agradável, o que é perfeito.''\\
+		(Bíblia Sagrada, Romanos 12, 2)
+\end{epigrafe}
+
+
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo, espaço entre o resumo e as palavras-chave
+\begin{resumo}
+ Segundo a ABNT, o resumo deve ressaltar o
+ objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
+ destes itens dependem do tipo de resumo (informativo ou indicativo) e do
+ tratamento que cada item recebe no documento original. O resumo deve ser
+ precedido da referência do documento, com exceção do resumo inserido no
+ próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
+ resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
+ ponto e finalizadas também por ponto.
+
+ \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+\end{resumo}
+
+
+% resumo em inglês
+\begin{resumo}[Abstract]
+ \begin{otherlanguage*}{english}
+   This is the english abstract. 
+
+   \textbf{Key-words}: latex. abntex. text editoration.
+ \end{otherlanguage*}
+\end{resumo}
+
+
+
+% ---
+% inserir lista de ilustrações
+% ---
 \pdfbookmark[0]{\listfigurename}{lof}
 \listoffigures*
 \cleardoublepage
+% ---
 
+
+% Lista de Gráficos
+% \pdfbookmark[0]{\listofgraficosname}{log}
+% \listofgraficos*
+% \cleardoublepage
+
+
+
+% ---
+% inserir lista de tabelas
+% ---
 % \pdfbookmark[0]{\listtablename}{lot}
 % \listoftables*
 % \cleardoublepage
+% ---
 
-
-% \pdfbookmark[0]{\contentsname}{toc}
-% \tableofcontents*
+% Lista de Quadros
+% \pdfbookmark[0]{\listofquadrosname}{loq}
+% \listofquadros*
 % \cleardoublepage
 
 
+% ---
+% inserir lista de abreviaturas e siglas
+% ---
+% \begin{siglas}
+%   \item[ABNT] Associação Brasileira de Normas Técnicas
+%   \item[abnTeX] ABsurdas Normas para TeX
+% \end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+% ---
+% \begin{simbolos}
+%   \item[$ \Gamma $] Letra grega Gama
+%   \item[$ \Lambda $] Lambda
+%   \item[$ \zeta $] Letra grega minúscula zeta
+%   \item[$ \in $] Pertence
+% \end{simbolos}
+% ---
+
+
+% inserir o sumario
+% ----
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
 \textual
 
+\chapter*[Introdução]{Introdução}
 \input{elementos-textuais/introducao}
 \cleardoublepage
+\chapter{SÍNTESE BIBLIOGRÁFICA}
 \input{elementos-textuais/r-bibliografica}
 \cleardoublepage
+\chapter{MATERIAIS E MÉTODOS}
 \input{elementos-textuais/documentation}
 
-% \part{Preparação da pesquisa}
-% \part{Referenciais teóricos}
+% \chapter{RESULTADOS, ANÁLISE E DISCUSSÃO}
 
+% \chapter*[Considerações Finais]{Considerações Finais}
+
+
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
 \postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+
 \bibliography{references}
 
 
-% \begin{apendicesenv}
-% \partapendices
-% \end{apendicesenv}
+% Inicia os apêndices
+\begin{apendicesenv}
 
 
-% \begin{anexosenv}
-% \partanexos
-% \end{anexosenv}
+\partapendices % Imprime uma página indicando o início dos apêndices
 
 
-\phantompart
-\printindex
+\chapter{Quisque libero justo}
+
+
+
+
+
+
+
+\end{apendicesenv}
+
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos 
+% ---
+\begin{anexosenv}
+
+
+\partanexos  % Imprime uma página indicando o início dos anexos
+
+% ----
+\chapter{Primeiro}
+
+Este anexo é sobre como se pode ficar rico. Para ficar rico...
+
+
+
+
+
+\end{anexosenv}
+
 
 \end{document}
