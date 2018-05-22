@@ -5,4 +5,11 @@ O primeiro atributo relevante aqui é o sentimento. Já que será abordado dimen
 
 Um dos atributos utilizados aqui será o texto normalizado, para isso será utilizado o \textit{spacy}, uma biblioteca Python para remover palavras que oferecem apenas ruídos ao resultado. Além disso, também será tirada a arvore sintática, para que seja possível estabelecer padrões de discurso na IA, ou então, reconhecer certas palavras presentes em demais analises.
 
+Além disso serão utilizados alguns atributos ja consolidados pelas pesquisas feitas por De Choudhury\cite{de2013social, de2013predicting}. Alguns deles como:
+\begin{itemize}
+ \item Volume: Quantidade de tweets diarios
+ \item Reciprocidade: Interação com demais usuários via respostas
+ \item \textit{Ego-Network}: Podendo ser traduzido como Rede-Intrapessoal (ou Rede Ego), seria a quantidade de pessoas que o usuário segue e que seguem-o.
+\end{itemize}
+
 Uma vez observado os nossos atributos, seria necessário erguer um sistema capaz de realizar tarefas e persistir esses dados em algum banco de dados. Porém, será utilizado nessa pesquisa uma ferramenta para gerenciar tais tarefas.
