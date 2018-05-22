@@ -1,15 +1,16 @@
 \section{Engenharia de Atributos}
 A escolha dos atributos, também intitulada popularmente como \textit{feature engineering}, é o ato mais importante durante a mineração de dados, por que é através desses atributos que as maquinas irão aprender. É válido destacar que essa sessão serve apenas para introduzir a razão dos atributos, seu detalhamento será dado durante a sua implementação.
 
-O primeiro atributo relevante aqui é o sentimento. Já que será abordado dimensões afetivas negativas, o sentimento expressado por uma frase tem um grande impacto como atributo. Entretanto, o sentido em uma frase pode ser mais fácil de ser extraído em textos concisos, ou seja, normalizar os textos é necessário.
+O primeiro atributo relevante aqui é o sentimento. Já que será abordado dimensões afetivas negativas, o sentimento expressado por uma frase tem um grande impacto como atributo. Entretanto, o sentido em uma frase pode ser mais fácil de ser extraído em textos concisos, ou seja, normalizar os textos se faz necessário.
 
-Um dos atributos utilizados aqui será o texto normalizado, para isso será utilizado o \textit{spacy}, uma biblioteca Python para remover palavras que oferecem apenas ruídos ao resultado. Além disso, também será tirada a arvore sintática, para que seja possível estabelecer padrões de discurso na IA, ou então, reconhecer certas palavras presentes em demais analises.
+Um dos atributos utilizados aqui será o texto normalizado, para isso será utilizado o \textit{spacy}, uma biblioteca Python para remover palavras que oferecem apenas ruídos ao resultado. Além disso, também será gerado mapa com as definições sintáticas das palavras, também conhecida como arvore sintática, para que seja possível estabelecer padrões de discurso na IA, ou então, reconhecer certas palavras presentes em demais analises.
 
 Além disso serão utilizados alguns atributos ja consolidados pelas pesquisas feitas por De Choudhury\cite{de2013social, de2013predicting}. Alguns deles como:
 \begin{itemize}
  \item Volume: Quantidade de tweets diarios
  \item Reciprocidade: Interação com demais usuários via respostas
- \item \textit{Ego-Network}: Podendo ser traduzido como Rede-Intrapessoal (ou Rede Ego), seria a quantidade de pessoas que o usuário segue e que seguem-o.
+ \item \textit{Ego-Network}: Podendo ser traduzido como Rede-Intrapessoal (ou Rede Ego), seria a quantidade de pessoas que o usuário segue e que segue-o.
+ \item Nível de Insônia: O próprio De Choudhury cita Lisa Lustberg \cite{lustberg2000depression} ao tratar a insônia como um dos fatores derivados da depressão, logo será adota os mesmos padrões estabelecidos pelos pesquisadores.
 \end{itemize}
 
-Uma vez observado os nossos atributos, seria necessário erguer um sistema capaz de realizar tarefas e persistir esses dados em algum banco de dados. Porém, será utilizado nessa pesquisa uma ferramenta para gerenciar tais tarefas.
+Uma vez observado alguns dos principais atributos, seria necessário erguer um sistema capaz de realizar tarefas e persistir esses dados em algum banco de dados. Porém, será utilizado nessa pesquisa uma ferramenta para gerenciar tais tarefas.

@@ -1,0 +1,12 @@
+\section{Tarefas de Processamento}
+Como explicado, o APPA ira gerenciar nossas tarefas de processamento, ja foi abordado também alguns atributos que serão necessários para 14BIS executar os modelos lógicos. Tendo isso em vista é necessário que seja implementado \textit{scripts} de mineração e pré-processamento para que a base de dados de dados do projeto tenha a estrutura necessária para que as IAs possam agir.
+
+Essa sessão tem como objetivo detalhar os atributos e \textit{scripts} criados para gerar-los. Além disso em alguns casos, onde são utilizados recursos externos como APIs, será detalhado a configuração necessária.
+
+É importante ressaltar que todo o projeto é \textit{Open Source}, conhecidos como projeto de código aberto, e todo o código criado para esse projeto pode ser encontrado na plataforma de versionamento do GitHub\footnote{\url{https://github.com/getdumont}}.
+
+Antes de iniciarmos as explicações é necessário que para reprodução dessa pesquisa você tenha inicialmente o Docker\footnote{\url{https://www.docker.com/}} instalado. Caso deseje executar as tarefas individualmente, como será citado aqui, é necessário que você tenha instalado na sua máquina o Python 3.6\footnote{\url{https://www.python.org/downloads/release/python-360/}} e o NodeJS 9.11\footnote{\url{https://nodejs.org/en/blog/release/v9.11.1/}}. Vale lembrar que todo código aqui demonstrado foi escrito, executado e testado em um sistema operacional com base Unix, logo a portabilidade com Windows não é garantida.
+
+Uma vez com as ferramentas instaladas no sistema operacional, torna-se possível a reprodução dessa pesquisa. A primeira etapa como já discursada até então se refere a coleta de dados.
+
+\input{elementos-textuais/documentation-sections/tarefas/coleta}

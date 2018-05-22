@@ -40,55 +40,64 @@
 
 \pagebreak
 \begin{dedicatoria}
- Este trabalho é dedicado às crianças adultas que,\\
-    quando pequenas, sonharam em se tornar cientistas.
+ Este trabalho é dedicado a todos que um dia sonharam em melhorar a vida de alguém com grandes ou pequenos atos.
 \end{dedicatoria}
 
 
 \begin{agradecimentos}
-Os agradecimentos principais são direcionados à Gerald Weber, Miguel Frasson,
-Leslie H. Watter, Bruno Parente Lima, Flávio de Vasconcellos Corrêa, Otavio Real
-Salvador, Renato Machnievscz e todos aqueles que
-contribuíram para que a produção de trabalhos acadêmicos conforme
-as normas ABNT com \LaTeX\ fosse possível.
+Primeiramente gostaria de agradecer aos meus pais, minha irmã e a toda minha família pelo apoio nesses últimos anos. Todas as vezes que tranquei a faculdade ou troquei de curso e mesmo assim sempre acreditarem no meu potencial e me incentivaram. 
+
+Gostaria de agradecer a todos os professores da Logatti. Em especial ao Fabio Fornazzari Papini que além de um excelente coordenador sempre foi um grande amigo e me deu grandes conselhos e orientação nessa caminhada profissional. 
+
+Meu agradecimento mais que especial a minha orientadora Cristina Cibeli Vidotti Ivo de Medeiros, que me introduziu a Inteligência Artificial e sempre acredita em tudo o que me proponho a fazer por mais maluco que seja. 
+
+Por último, porém de longe menos importante a todos os meus amigos, que sempre estiveram do meu lado me levando para frente, gostaria de nomear alguns nesse agradecimento. 
+
+Jéssica Temporal e Leticia Portella me levaram a ter interesse por análise de dados e me ensinaram muito sobre o mesmo. 
+
+João Daher e Mateus Freira que sempre me sedem um pouco do seu tempo para me passar algum conhecimento valioso de inteligência artificial. 
+
+Alex Cortes e Tiago Correa que me ajudaram com toda a parte visual do projeto.
+
+Por fim Jaqueline Alves que me ajudou demais com a parte de psicologia cuja a mesma não tinha conhecimento nenhum, foi graças a suas referências que pude tocar essa ideia.
+
+
 
 \end{agradecimentos}
 
 
 \begin{epigrafe}
-``Não vos amoldeis às estruturas deste mundo, \\
-		mas transformai-vos pela renovação da mente, \\
-		a fim de distinguir qual é a vontade de Deus: \\
-		o que é bom, o que Lhe é agradável, o que é perfeito.''\\
-		(Bíblia Sagrada, Romanos 12, 2)
+“You don't understand anything until you learn it more than one way” – MINSKY,
+marvin. Managing an Information Security and Privacy Awareness and Training
+Program (2005)
 \end{epigrafe}
 
 
 
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo, espaço entre o resumo e as palavras-chave
-\begin{resumo}
- Segundo a ABNT, o resumo deve ressaltar o
- objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
- destes itens dependem do tipo de resumo (informativo ou indicativo) e do
- tratamento que cada item recebe no documento original. O resumo deve ser
- precedido da referência do documento, com exceção do resumo inserido no
- próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
- resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
- ponto e finalizadas também por ponto.
+% \begin{resumo}
+%  Segundo a ABNT, o resumo deve ressaltar o
+%  objetivo, o método, os resultados e as conclusões do documento. A ordem e a extensão
+%  destes itens dependem do tipo de resumo (informativo ou indicativo) e do
+%  tratamento que cada item recebe no documento original. O resumo deve ser
+%  precedido da referência do documento, com exceção do resumo inserido no
+%  próprio documento. (\ldots) As palavras-chave devem figurar logo abaixo do
+%  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
+%  ponto e finalizadas também por ponto.
 
- \textbf{Palavras-chave}: latex. abntex. editoração de texto.
-\end{resumo}
+%  \textbf{Palavras-chave}: latex. abntex. editoração de texto.
+% \end{resumo}
 
 
 % resumo em inglês
-\begin{resumo}[Abstract]
- \begin{otherlanguage*}{english}
-   This is the english abstract. 
+% \begin{resumo}[Abstract]
+%  \begin{otherlanguage*}{english}
+%    This is the english abstract. 
 
-   \textbf{Key-words}: latex. abntex. text editoration.
- \end{otherlanguage*}
-\end{resumo}
+%    \textbf{Key-words}: latex. abntex. text editoration.
+%  \end{otherlanguage*}
+% \end{resumo}
 
 
 
@@ -106,8 +115,6 @@ as normas ABNT com \LaTeX\ fosse possível.
 % \listofgraficos*
 % \cleardoublepage
 
-
-
 % ---
 % inserir lista de tabelas
 % ---
@@ -122,14 +129,12 @@ as normas ABNT com \LaTeX\ fosse possível.
 % \cleardoublepage
 
 
-% ---
-% inserir lista de abreviaturas e siglas
-% ---
-% \begin{siglas}
-%   \item[ABNT] Associação Brasileira de Normas Técnicas
-%   \item[abnTeX] ABsurdas Normas para TeX
-% \end{siglas}
-% ---
+\begin{siglas}
+  \item[APPA] Application to Process and Produce Analytic Data
+  \item[IA] Inteligência Artificial
+  \item[Tweet] Nome utilizado para postagem de um usuário no Twitter.
+\end{siglas}
+
 
 % ---
 % inserir lista de símbolos
@@ -188,21 +193,21 @@ as normas ABNT com \LaTeX\ fosse possível.
 
 
 % Inicia os apêndices
-\begin{apendicesenv}
+% \begin{apendicesenv}
 
 
-\partapendices % Imprime uma página indicando o início dos apêndices
+% \partapendices % Imprime uma página indicando o início dos apêndices
 
 
-\chapter{Quisque libero justo}
-
-
-
+% \chapter{Quisque libero justo}
 
 
 
 
-\end{apendicesenv}
+
+
+
+% \end{apendicesenv}
 
 
 
@@ -213,21 +218,21 @@ as normas ABNT com \LaTeX\ fosse possível.
 % ---
 % Inicia os anexos 
 % ---
-\begin{anexosenv}
+% \begin{anexosenv}
 
 
-\partanexos  % Imprime uma página indicando o início dos anexos
+% \partanexos  % Imprime uma página indicando o início dos anexos
 
 % ----
-\chapter{Primeiro}
+% \chapter{Primeiro}
 
-Este anexo é sobre como se pode ficar rico. Para ficar rico...
-
-
+% Este anexo é sobre como se pode ficar rico. Para ficar rico...
 
 
 
-\end{anexosenv}
+
+
+% \end{anexosenv}
 
 
 \end{document}
