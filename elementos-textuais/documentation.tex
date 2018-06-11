@@ -4,7 +4,7 @@ Como observado, existem vários passos para conclusão desse projeto, abertament
 
 O projeto em geral tem alguns outros pontos sociais envolvidos, que assim, tornam a área de atuação da pesquisa um pouco mais ampla, entretando nenhum desses pontos, exceto a utilização de profissionais capacidados para geração de alguns atributos na base da pesquisa, impactam diretamentamente a \textit{performance} e por isso não serão detalhados. Logo essa documentação é voltada unicamente ao sistema que será desenvolvido.
 
-Pode-se observar na figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias. O aparente terceiro núcleo, na realidade, é simplesmente um banco de dados embutido gerado pelo APPA (ferramenta de administração de mineração de dados) dentro do Dumont e que será consumido pelo 14BIS posteriormente.
+Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias. O aparente terceiro núcleo, na realidade, é simplesmente um banco de dados embutido gerado pelo APPA (ferramenta de administração de mineração de dados) dentro do Dumont e que será consumido pelo 14BIS posteriormente.
 
 \begin{figure}
     \centering
@@ -23,7 +23,7 @@ Existem basicamente 5 técnologias que estão sendo utilizadas nesse projeto:
  \item Docker: Docker é uma ferramenta para infra-estrutura, será utilizado para rodar a aplicação em containers e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
 \end{itemize}
 
-Existirá uma sessão explicando o funcionamento do APPA, e como serão desenvolvidos os scripts que ele ira gerenciar, tanto quanto a parte explicativa sobre a Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco embutido. Tanto o Dumont quanto o 14BIS irão consumir os dados salvos, porem é responsabilidade do 14BIS consumi-los a fim de treinar as IAs desse projeto para gerar os modelos lógicos.
+Existirá uma sessão explicando o funcionamento do APPA, e como serão desenvolvidos os scripts que ele ira gerenciar, tanto quanto a parte explicativa sobre a Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco embutido. Tanto o Dumont quanto o 14BIS irão consumir os dados salvos, porem é responsabilidade do 14BIS consumi-los a fim de treinar as IAs desse projeto para gerar os modelos lógicos.
 
 \begin{figure}
     \centering
