@@ -67,9 +67,10 @@ Por fim Jaqueline Alves que me ajudou demais com a parte de psicologia cuja a me
 
 
 \begin{epigrafe}
-“You don't understand anything until you learn it more than one way” – MINSKY,
-marvin. Managing an Information Security and Privacy Awareness and Training
-Program (2005)
+“You don't understand anything until you learn it more than one way”
+
+\textbf{MINSKY, Marvin. Managing an Information Security and Privacy Awareness and Training
+Program (2005)}
 \end{epigrafe}
 
 
@@ -149,8 +150,10 @@ Program (2005)
 
 % inserir o sumario
 % ----
+% \setcounter{tocdepth}{0}
 \pdfbookmark[0]{\contentsname}{toc}
-\tableofcontents*
+\setcounter{tocdepth}{0}
+\tableofcontents
 \cleardoublepage
 % ---
 
@@ -162,6 +165,7 @@ Program (2005)
 \textual
 
 \chapter*[Introdução]{Introdução}
+\addcontentsline{toc}{section}{\protect\numberline{}Introdução}%
 \input{elementos-textuais/introducao}
 \cleardoublepage
 \chapter{SÍNTESE BIBLIOGRÁFICA}
@@ -173,6 +177,8 @@ Program (2005)
 % \chapter{RESULTADOS, ANÁLISE E DISCUSSÃO}
 
 % \chapter*[Considerações Finais]{Considerações Finais}
+% \addcontentsline{toc}{section}{\protect\numberline{}Considerações Finais}%
+
 
 
 

@@ -344,22 +344,29 @@
 % DEDICATÓRIA E EPÍGRAFE
 % -----------------------------------------------------------------------------
 
-\renewenvironment{dedicatoria}
-{\par 
-\vspace*{\fill}\begin{flushright}
-\itshape }
-{ \end{flushright} \newpage
+\renewenvironment{dedicatoria}{
+  \par
+  \vspace*{\fill}
+  \begin{flushright}
+  \begin{minipage}{0.6\textwidth}
+}{
+  \vspace{2cm}
+  \end{minipage}
+  \end{flushright}
+  \newpage
 }
 
-
-\renewenvironment{epigrafe}
-{\par 
-\vspace*{\fill}\begin{flushright}
-\itshape  }
-{ \end{flushright} \newpage
+\renewenvironment{epigrafe}{
+  \par
+  \vspace*{\fill}
+  \begin{flushright}
+  \begin{minipage}{0.6\textwidth}
+}{
+  \vspace{2cm}
+  \end{minipage}
+  \end{flushright}
+  \newpage
 }
-
- 		
 
 
 
