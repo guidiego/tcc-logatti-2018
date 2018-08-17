@@ -2,9 +2,9 @@ O objetivo da pesquisa é caracterizar dimensões afetivas negativas em perfis d
 
 Como observado, existem vários passos para conclusão desse projeto, abertamente estrutura de processamento contára com um processo de mineração e dois processos de inteligencia artificial afim de gerar dois modelos lógicos. O primeiro modelo responsavel por inferir valores da EADS em um perfil, e o segundo, de predizer, a partir de dados do perfil, a probabilidade de existir um determinado nível de afetividade utilizando dados do perfil.
 
-O projeto em geral tem alguns outros pontos sociais envolvidos, que assim, tornam a área de atuação da pesquisa um pouco mais ampla, entretando nenhum desses pontos, exceto a utilização de profissionais capacidados para geração de alguns atributos na base da pesquisa, impactam diretamentamente a \textit{performance} e por isso não serão detalhados. Logo essa documentação é voltada unicamente ao sistema que será desenvolvido.
+ projeto em geral tem alguns outros pontos sociais envolvidos, sendo um deles captação de dados embasados através de profissionais, entretando, nosso objetivo inicial é fazer a máquina coletar e acertar as previsões com qualquer tipo de dado (mesmo que fornercido por pessoas não capacitadas), sendo assim, detalharemos o sistema em si (coleta de dados e aprendizagem de maquina) e as metodologias utilizadas para desenvolve-lo.
 
-Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias. O aparente terceiro núcleo, na realidade, é simplesmente um banco de dados embutido gerado pelo APPA (ferramenta de administração de mineração de dados) dentro do Dumont e que será consumido pelo 14BIS posteriormente.
+Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias.
 
 \begin{figure}
     \centering
@@ -15,15 +15,14 @@ Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois n�
 
 Existem basicamente 5 técnologias que estão sendo utilizadas nesse projeto:
 \begin{itemize}
- \item Rust: Rust é uma linguagem altamente performatica, preza por custo zero em abstração, atua com excelencia em processamento paralelo e seu modelo de alocação de memória evita \textit{dataraces}\footnote{O termo \textit{datarace} traduzido abertamente como corrida de dados é um termo muito utilizado em processamento paralelo e envolve a tentativa de uso de uma alocação de memória por diferentes partes do sistema em um mesmo periodo de tempo}.
  \item Python: É a linguagem atual mais utilizada no mundo de Aprendizado de Máquina, sua simplicidade ja á torna simples de usar, porém, a quantidade de materiais, bibliotecas e artigos sobre PLN e Aprendizado de Máquina á tornam a principal linguagem nesse projeto.
  \item Node/Javascript: Node é o interpretador que permite com que seja possivel executar o Javascript (linguagem originalmente de navegar no servidor). A linguagem tem um grande ganho com integrações e será utilizada para consumir recursos vindos de APIs.
- \item Go: Asemelha-se muito com Rust, porém, tem um ambiente menos burocratico devido a seus diferentes objetivos. Go será a escolha para qualquer processo que não envolva API ou PLN.
- \item RocksDB: O RocksDB é um banco não relacionado, estrutura é baseada em duas \textit{strings} uma sendo chave e a segunda sendo um valor relacionado a essa chave. Bancos não relacionais tendem a ter leitura mais rápida que bancos relacionais, a estrutura do Rocks é baseada em logs e escrito em baixo nivel o que permite sua escrita ser tão rápida quanto sua leitura.
+ \item Go: Linguagem fortemente e estaticamente tipada, que fornecesse um poder de processamento equivalente a da linguagem C, entretando, muito mais simples de escrever e manter código, será utilizado para scripts onde serão necessário processamento de muitos dados.
+ \item MongoDB: O Mongo é um banco não relacionado, em resumo, um grande banco de documentos indexados por atributos especificos, fornece um grande poder de leitura alem do fato de não ser prezo a estruturas pré-definidas como banco relacionais (isso facilita para que sejam inseridos novos dados futuramente sem grandes custos).
  \item Docker: Docker é uma ferramenta para infra-estrutura, será utilizado para rodar a aplicação em containers e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
 \end{itemize}
 
-Existirá uma sessão explicando o funcionamento do APPA, e como serão desenvolvidos os scripts que ele ira gerenciar, tanto quanto a parte explicativa sobre a Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco embutido. Tanto o Dumont quanto o 14BIS irão consumir os dados salvos, porém é responsabilidade do 14BIS consumi-los a fim de treinar as IAs desse projeto para gerar os modelos lógicos.
+Existirá uma sessão explicando todos os conceitos utilizados na mineração, assim como cada ferramenta usada em seu processo. Alem disso, será detalhada a parte  de Inteligencia Artificial, logo, nessa introdução os casos de uso serão tratados de forma sucinta. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco de dados.
 
 \begin{figure}
     \centering
@@ -35,5 +34,4 @@ Existirá uma sessão explicando o funcionamento do APPA, e como serão desenvol
 Para melhor entendimento a documentação será dividida em núcleos teóricos e práticos. Primeiramente será dado toda a descrição teórica sobre a escolha de atributos, e funcionamento das ferramentas que serão utilizadas no processo. Em seguida será detalhado os núcleos mais práticos como a coleta e mineração, onde alem de explicar como rodar o Dumont, tambem serão explicados como e por que foram construidas essas partes do sistema. Como ja dito, a primeira etapa se consiste em entender alguns dos atributos utilizados aqui.
 
 \input{elementos-textuais/documentation-sections/featureengineering}
-\input{elementos-textuais/documentation-sections/appa}
-\input{elementos-textuais/documentation-sections/tarefas}
+\input{elementos-textuais/documentation-sections/ferramentas}
