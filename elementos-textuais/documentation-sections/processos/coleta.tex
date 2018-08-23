@@ -1,19 +1,25 @@
 \subsection{Coleta}
-A coleta será feita utilizando a API publica do twitter, o link para a documentação é \url{https://developer.twitter.com/en/docs}. Será trabalhado no projeto duas entidades: Tweet e Usuário. O tweet é a entidade que representa a publicação do usuário, enquanto o usuário contém informações necessárias sobre o seu perfil.
+Recapitulando, já foi dito que será utilizado a API do Twitter para coleta de dados, já foi detalhado as coleções que serão armazenadas no nosso banco e as técnologias utilizadas nessa etapa. Nos resta entender algumas configurações e como foi desenvolvido a parte de coletar dados do twitter e armazenar.
 
-Para que seja possível acessar a API é necessário criar uma conta de desenvolvimento e gerar o \textit{token} de acesso\footnote{\url{https://apps.twitter.com/app/new}}. Com a chave em mãos é possível replicar o arquivo /collector/client/.env\_sample dentro do projeto Dumont para /collector/client/.env, e conforme demonstrado na Figura \ref{fig:twitteropts}, completar os campos necessários.
+O coletor é algo simples, basicamente existem 3 pontos de acesso da api, como já dito préviamente na revisão, que serão consultados. Foi desenvolvida uma função que coleta-se em tempo real tweets na área do Brasil que contesse algumas palavras chaves, feito isso, foi coletado os dados do usuário que fez aquele tweet e os ultimos 200 tweets do mesmo.
 
-Para rodar basta executar o comando \textit{node collector/twitter.js}, e verá a saída de dados. Existem duas observações relevantes a serem feitas nessa etapa:
-\begin{itemize}
-  \item !AppaTag(tweet) e !AppaTag(user): Se notar, algumas linhas começarão com essas duas anotações, são essas anotações que serão responsáveis por fazer com que o APPA identifique qual entidade de processamento será responsável por processar cada tipo de dado.
-  \item Dados de Emoji: É possível notar que alguns dados mapeados não existem na API do Twitter. Como observado, um dos problemas durante a mineração de dados é o uso de \textit{emojis} em textos, já citado também, é possível algumas tarefas de pré-processamento serem executadas durante a própria coleta. Sabendo que \textit{emojis} podem expressar sentimentos \cite{novak2015sentiment}, e que armazenar e tratar esse dado poderia ser relevante na hora de confirmar sentimento em frases, o autor também criou a biblioteca \textit{Emojinator}\footnote{https://github.com/getdumont/emojinator}, além do texto tradado, também será obtida informações do \textit{emojis} utilizados no meio do texto.
-\end{itemize}
+Essa função foi posta para ser executada dentro de uma API, logo, é necessário acessar uma URL para dispar-la, isso foi feito para que cada um utiliza-se essa pesquisa como fosse de seu agrado, entretando, existe um arquivo na raiz do projeto chamado \textit{dumont/cron.sh} que dispara a API de uma em uma hora.
+
+De todos os modelos préviamente explicados, os utilizados aqui são os de \textit{user}, \textit{tweet} e \textit{list}. Eles podem ser encontrados dentro de \textit{dumont/coletor/schemas}, uma curiosidade é que tirando o modelo de \textit{list} os demais contam com funções que são realizadas antes e depois que o dado é persistido no banco. Esse tipo ação é necessária para disparar ações secundarias a própria coletagem.
+
+Antes do dado ser salvo é possivel notar a criação de um objeto partindo dos atributos de texto e descrição referentes ao tweet e o usúario respectivamente, isso se deve a um dos problemas durante a mineração de dados ser o uso de \textit{emojis} em textos. Sabendo que \textit{emojis} podem expressar sentimentos \cite{novak2015sentiment}, e que armazenar e tratar esse dado poderia ser relevante na hora de confirmar sentimento em frases, o autor também criou a biblioteca \textit{Emojinator}\footnote{https://github.com/getdumont/emojinator}, além do texto tradado, também será obtida informações do \textit{emojis} utilizados no meio do texto.
+
+Após o dado ter sido salvo é possível notar que é executado uma função para enviar o dado a uma fila do SQS, entretando esse ponto será abordado no anexo, durante a pesquisa usaremos todas as ferramentas é métodos locais.
+
+Para isso existem ainda algumas configurações pendentes, como podemos observar na figura \ref{fig:creds}, existem duas telas, a primeira é o \textit{dumont/sample\_env} e a segunda a réplica criada anteriormente \textit{dumont/dev.env}, foi removido todas as váriaveis referentes aos serviços da AWS, já que não será utilizado local como ja abordado, alem disso foi retirado o usuario e senha do mongo já que o serviço no docker foi configurado para não precisar do mesmo. Além disso a variavel \textit{COLLECTOR\_REQUEST\_TOKEN} pois a intuição dela é criar um minimo de autenticação caso utilize essa API pública na internet. Por fim o \textit{COLLECTOR\_LIMIT} irá limitar a quantidade de usuarios a serem coletados a cada requisição.
 
 \begin{figure}
     \centering
-    \includegraphics[width=.8\textwidth]{imagens/twitteropts.png}
-    \caption{Imagem demonstrando onde cada chave deve ser inserida no código}
-    \label{fig:twitteropts}
+    \includegraphics[width=1\textwidth]{imagens/creds.png}
+    \caption{Imagem demonstrando passo a passo de como gerar o JSON de credencial}
+    \label{fig:creds}
 \end{figure}
 
-Uma vez configurado o coletor, ainda é necessário entender e configurar as outras tarefas para que o APPA funcione apropriadamente, logo, é necessário entender como essas entidades ficarão no final e quais as tarefas que realizarão essa manipulação.
+É importante lembrar dos limites da API publica do twitter, e tambem que devido a implementação (que pode ser acompanhada no arquivo \textit{dumont/collector/twitter/index.js}) na linha 74 é possível ver o momento onde a \textit{stream} é parada, entretando, podem chegar inumeros tweets de diferentes usuarios simuntaneamente, fazendo assim, com que sobrecarregue a quantiadade de usuarios permitidas na API. É sugerido rodar valores baixos entre 20 a 45 para evitar problemas.
+
+Uma vez configurado, é possivel executar o comando \textit{docker-compose up collector}, uma vez que o docker inicie o serviço você pode iniciar a coleta utilizando desde um navegador, ferramentas (um exemplo é o Postman\footnote{https://www.getpostman.com/}) ou até mesmo o \textit{curl} utilizando o uri \textit{\url{http://127.0.0.1:8080/}}
