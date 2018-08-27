@@ -1,0 +1,14 @@
+\subsection{Amostra}
+Nesse momento, com uma quantidade de dados significativas é necessário que se recolha uma amostra dos dados. Para isso scripts são necessários para criar tipos de amostragens para ajudar a inserção de dados ser mais assertiva. No momento é necessário já ter em mente alguns pontos:
+
+\begin{itemize}
+    \item Todo o usuário tem tweets (ao menos um).
+    \item Todo o tweet tem o sentimento analisado
+    \item O foco é responder perguntas utilizando o conteúdo do tweet
+\end{itemize}
+
+Com esses pontos em vista é possível realizar uma lógica básica de, uma vez que as perguntas da EADS tem a ver com dimensões negativa, perfis com maior sentimento negativo tendem a responder mais perguntas do que perfis neutros ou positivos. Para isso será lido todos os tweets e criado uma média de sentimento a partir das postagens, essa média ira definir os usuários em 3 grupos: Positivos, Neutros e Negativos.
+
+Já dito, nosso foco é nas dimensões negativas, logo será feito uma amostra 10\% de perfis positivos e neutros e 80\% de perfis negativos. Além disso falta se detalhar qual métrica será utilizado para definir se o perfil esta em um dos 3 grupos.
+
+Na analise de sentimento existe \textit{score} um dado que segue de -1.0 até 1.0 e a magnitude que vária em decorrer do tamanho do texto, expressando o quanto aquele \textit{score} esta presente no texto.
