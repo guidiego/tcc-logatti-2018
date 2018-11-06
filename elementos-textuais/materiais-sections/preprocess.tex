@@ -1,9 +1,9 @@
 \subsection{Tarefas de Pré-Processamento}
-O segundo passo após coletar os dados é rodar scripts de mineração. Uma das maiores dificuldades é como manipular os dados de maneira incremental. Desde que a pesquisa teve inicio, muitas ideias surgiram, novos pontos de vistas e novos dados a serem minerados. Foi adotado uma propriedade chamada \textit{processing\_version}, essa propriedade marca o documento com a versão do processamento dele.
+O segundo passo após coletar os dados é rodar scripts de pré-processamento e mineração. Uma das maiores dificuldades é como manipular os dados de maneira incremental. Desde que a pesquisa teve inicio, muitas ideias surgiram, novos pontos de vistas e novos dados a serem minerados. Foi adotado uma propriedade chamada \textit{processing\_version}, essa propriedade marca o documento com a versão do processamento dele.
 
 Dentro da pasta \textit{dumont/tasks/processing} existe duas pastas, uma para processar usuários e outra para processar tweets, ambas exportam vários estágios de processamento, esse estágio é exportado e passado para uma classe chamada \textit{Processor} localizada no arquivo \textit{dumont/tasks/processing/\_\_init\_\_.py}, o nível de processamento base é o 0 (nível inserido na hora que o coletor salva do dado no banco), a partir disso é possível atualizar o processamento por um script.
 
-As tarefas de processamento é responsável por:
+As tarefas de processamento são responsáveis por:
 
 \begin{itemize}
     \item Normalização de Palavras: Transformar girias e erros conhecidos em palavras corretas.
@@ -12,4 +12,4 @@ As tarefas de processamento é responsável por:
     \item Analise de Sentimento: Utilizando a API do Google Language é retirado o sentimento da frase original e da frase tratada também.
 \end{itemize}
 
-Para obter esses dados basta rodar o comando \textit{docker-compose up tasks}. Com esses dados já é possível ter alguma noção de informações relevantes dos textos, porém ainda é necessário de embasamento técnico, ou seja, um dado especialista que possa orientar a máquina a utilizar as demais propriedades mapeadas para localizar um delta em comum, entretanto exigir que todos os dados da massa sejam analisados é massante. Para isso é ncessário gerar uma pre-amostra.
+Para obter esses dados basta rodar o comando \textit{docker-compose up tasks}. Com esses dados já é possível ter alguma noção de informações relevantes dos textos, porém ainda é necessário de embasamento técnico, ou seja, um dado especialista que possa orientar a máquina a utilizar as demais propriedades mapeadas para localizar um delta em comum, entretanto, exigir que todos os dados da massa sejam analisados é algo inviavel. Para isso é necessário gerar uma pré-amostra.
