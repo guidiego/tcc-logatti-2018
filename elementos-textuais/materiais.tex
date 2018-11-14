@@ -1,10 +1,10 @@
-O objetivo da pesquisa é caracterizar dimensões afetivas negativas em perfis do twitter localizando pontos comuns entre usúarios portadores de afetividades negativas (stress, ansiedade e depressão) de mesmo nível. Esse tipo de processo se asemelha com a aprendizagem não supervisionada, logo, antes dessa etapa é necessário mapearmos atributos, sendo assim, é necessário a identificação de usúarios com dimensões afetivas negativas em primeiro momento.
+O objetivo final do projeto é caracterizar dimensões afetivas negativas em perfis do Twitter localizando pontos comuns entre usuários portadores de afetividades negativas (stress, ansiedade e depressão) de mesmo nível. Esse tipo de processo se assemelha com a aprendizagem não supervisionada, logo, antes dessa etapa é necessário mapearmos atributos, sendo assim, é necessário a identificação de usuários com dimensões afetivas negativas em primeiro momento.
 
-Como observado, existem vários passos para conclusão desse projeto, abertamente estrutura de processamento contára com um processo de mineração e dois processos de inteligencia artificial afim de gerar dois modelos lógicos. O primeiro modelo responsavel por inferir valores da EADS em um perfil, e o segundo, de predizer, a partir de dados do perfil, a probabilidade de existir um determinado nível de afetividade utilizando dados do perfil.
+Como observado, existem vários passos para conclusão desse projeto, abertamente estrutura de processamento contará com um processo de mineração e dois processos de inteligência artificial afim de gerar dois modelos lógicos. O objetivo dessa pesquisa é a primeira etapa do projeto, em outras palavras, o modelo responsável por inferir valores da EADS em um tweet.
 
-Projeto em geral tem alguns outros pontos sociais envolvidos, sendo um deles captação de dados embasados através de profissionais, entretando, nosso objetivo inicial é fazer a máquina coletar e acertar as previsões com qualquer tipo de dado (mesmo que fornercido por pessoas não capacitadas, no caso uma base anotada pelo próprio autor), sendo assim, será detalhado o sistema em si (coleta de dados e aprendizagem de maquina) e as metodologias utilizadas para desenvolve-lo.
+Visando o objetivo inicial, é necessário fazer a máquina coletar e acertar as previsões com qualquer tipo de dado (mesmo que fornecido por pessoas não capacitadas, no caso uma base anotada pelo próprio autor), sendo assim, será detalhado o sistema em si (coleta de dados e aprendizagem de maquina) e as metodologias utilizadas para desenvolve-lo.
 
-Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsavel pelas Inteligencias Artificias.
+Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsável pelas inteligências artificias.
 
 \begin{figure}
     \centering
@@ -13,18 +13,18 @@ Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois n�
     \label{fig:tecnologias}
 \end{figure}
 
-Existem basicamente 5 técnologias que estão sendo utilizadas nesse projeto:
+Existem basicamente 5 tecnologias que estão sendo utilizadas nesse projeto:
 \begin{itemize}
- \item Python: É a linguagem atual mais utilizada no mundo de Aprendizado de Máquina, sua simplicidade ja á torna simples de usar, porém, a quantidade de materiais, bibliotecas e artigos sobre PLN e Aprendizado de Máquina á tornam a principal linguagem nesse projeto.
- \item Node/Javascript: Node é o interpretador que permite com que seja possivel executar o Javascript (linguagem originalmente de navegar no servidor). A linguagem tem um grande ganho com integrações e será utilizada para consumir recursos vindos de APIs.
- \item Go: Linguagem fortemente e estaticamente tipada, que fornecesse um poder de processamento equivalente a da linguagem C, entretando, muito mais simples de escrever e manter código, será utilizado para scripts onde serão necessário processamento de muitos dados.
- \item MongoDB: O Mongo é um banco não relacionado, em resumo, um grande banco de documentos indexados por atributos especificos, fornece um grande poder de leitura alem do fato de não ser prezo a estruturas pré-definidas como banco relacionais (isso facilita para que sejam inseridos novos dados futuramente sem grandes custos).
- \item Docker: Docker é uma ferramenta para infra-estrutura, será utilizado para rodar a aplicação em containers e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
+ \item Python: É a linguagem atual mais utilizada para o aprendizado de máquina, sua objetividade ja á torna simples de usar, porém, a quantidade de materiais, bibliotecas e artigos sobre PLN e Aprendizado de Máquina á tornam a principal linguagem nesse projeto.
+ \item Node/Javascript: Node é o interpretador que permite com que seja possível executar o Javascript (linguagem originalmente de navegar no servidor). A linguagem tem um grande ganho com integrações e será utilizada para consumir recursos vindos de APIs.
+ \item Go: Linguagem fortemente e estaticamente tipada, que fornecesse um poder de processamento equivalente a da linguagem C, entretanto, muito mais simples de escrever e manter código, será utilizado para scripts onde serão necessário processamento de muitos dados.
+ \item MongoDB: O Mongo é um banco não relacional, que guarda dados em formato de documentos, muito utilizado no mercado recentemente.
+ \item Docker: Docker é uma ferramenta para infraestrutura, será utilizado para rodar a aplicação em containers e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
 \end{itemize}
 
-Todo o código dos núcleos está disponível no GitHub utilizando o GIT. Para entender como funciona a plataforma de versionamento, que pode ser tambem utilizada para achar informações mais técnicas alem de baixar o código basta seguir as instruções conforme o \autoref{app:git}. Além disso como mostrado ambos os núcleos utilizam Docker como base para executar as aplicações, isso devido ao resultado de tal abordagem reduzir alguns problemas possíveis em relação a ambiente de execução. É possível obter as informações necessárias para entendimento e instalação conforme o \autoref{app:docker}.
+Todo o código dos núcleos previamente demonstrados está disponível no GitHub. Para entender como funciona a plataforma de versionamento, que pode ser também utilizada para achar informações mais técnicas além de baixar o código basta seguir as instruções conforme o \autoref{app:git}. Além disso como mostrado ambos os núcleos utilizam Docker como base para executar as aplicações, isso devido ao resultado de tal abordagem reduzir alguns problemas possíveis em relação a ambiente de execução. É possível obter as informações necessárias para entendimento e instalação conforme o \autoref{app:docker}.
 
-Uma vez obtido conhecimento sobre os núcleos do projeto e suas técnologias, é possível idealizar o fluxo completo e interação entre elas. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco de dados.
+Uma vez obtido conhecimento sobre os núcleos do projeto e suas tecnologias, é possível idealizar o fluxo completo e interação entre elas. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do Twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco de dados.
 
 \begin{figure}[!h]
     \centering
@@ -33,9 +33,9 @@ Uma vez obtido conhecimento sobre os núcleos do projeto e suas técnologias, é
     \label{fig:tcc_caso_de_uso}
 \end{figure}
 
-Para salvar os durante a coleta ou o pré-processamento será utilizado o MongoDB. O MongoDB  é um banco não relacional, ou seja, um banco que não tem \textit{transactions}\footnote{Simboliza uma atividade realizada em um banco relacional} e é baseado inteiramente em documentos. Diferente de um banco não relacional, os dados inseridos nesse tipo de banco não tem uma normalização ou qualquer tipo de padrão. No caso do Mongo a unica identificação utilizada para interligar os documentos é a nomeada Coleção\footnote{As Coleções servem para agrupar tipos especificos de documentos.}.
+Para salvar os dados durante a coleta ou o pré-processamento será utilizado o MongoDB. O MongoDB  é um banco não relacional, ou seja, um banco que não tem \textit{transactions}\footnote{Simboliza uma atividade realizada em um banco relacional} e é baseado inteiramente em documentos. Diferente de um banco não relacional, os dados inseridos nesse tipo de banco não têm uma normalização ou qualquer tipo de padrão. No caso do Mongo a única identificação utilizada para interligar os documentos é a nomeada coleção\footnote{As Coleções servem para agrupar tipos especificos de documentos.}.
 
-Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão variar mais com o passar do desenvolvimento, pode-se notar na Figura \ref{fig:entities}, a visão inicial do que seria a estrutura de nossos documentos. Teremos duas coleções mais relevantes \textit{Tweet} e \textit{User} aqui ficaram armazenados os dados do Twitter, as demais estruturas são estruturas periféricas criadas para suportar o sistema de armazenamento de dados especialistas. Para isso existe a estrutura \textit{Answer} que serve para que os especilistas inserirem a possibilidade de um mapeamento do mesmo dentro de algum dos items da EADS. Por final existem mais duas coleções a \textit{Specialist} que armazena os especialistas registrados no nosso sistema e o \textit{List} que é uma coleção auxiliar para agrupar uma quantidade de tweets tornando mais facil para nossa aplicação apresenta-los aos especialista e coletar analise.
+Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão variar mais com o passar do desenvolvimento, pode-se notar na Figura \ref{fig:entities}, a visão inicial do que seria a estrutura de nossos documentos. Teremos duas coleções mais relevantes \textit{Tweet} e \textit{User} aqui ficaram armazenados os dados do Twitter, as demais estruturas são estruturas periféricas criadas para suportar o sistema de armazenamento de dados especialistas. Para isso existe a estrutura \textit{Answer} que serve para que os especialistas inserirem a possibilidade de um mapeamento de algum dos items da EADS para um tweet. Por final existem mais duas coleções a \textit{Specialist} que armazena os especialistas registrados no nosso sistema e o \textit{List} que é uma coleção auxiliar para agrupar uma quantidade de tweets tornando mais fácil para nossa aplicação apresenta-los aos especialista e coletar analise.
 
 \begin{figure}[!h]
     \centering
@@ -44,8 +44,9 @@ Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão v
     \label{fig:entities}
 \end{figure}
 
-Vale resaltar que o objetivo é gerar uma base de conhecimento, e isso implica na ausencia de profissionais agindo na base nesse primeiro trabalho. Além disso aplica-la a uma aprendizagem supervisionada e em seguida aplicar esse dado a uma não supervisionada. Logo a primeira etapa é adquirir o \textit{dataset} que será utilizado.
+Vale ressaltar que o objetivo é gerar uma base de conhecimento, e isso implica na ausência de profissionais agindo na base nesse primeiro trabalho. Além disso aplica-la a uma aprendizagem supervisionada e em seguida aplicar esse dado a uma não supervisionada. Logo a primeira etapa é adquirir o \textit{dataset} que será utilizado.
 
 \input{elementos-textuais/materiais-sections/coleta}
 \input{elementos-textuais/materiais-sections/preprocess}
 \input{elementos-textuais/materiais-sections/analise}
+\input{elementos-textuais/materiais-sections/especialista}
