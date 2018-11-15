@@ -21,6 +21,9 @@
   \or Dezembro% 12
   \fi}
 
+\newcommand{\specialcell}[2][l]{%
+  \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
 \ProvidesClass{abntex2-logatti}[2018/20/05 v1.0 abnTeX2-logatti]
 
