@@ -2,13 +2,13 @@ O objetivo final do projeto é caracterizar dimensões afetivas negativas em per
 
 Como observado, existem vários passos para conclusão desse projeto, abertamente estrutura de processamento contará com um processo de mineração e dois processos de inteligência artificial afim de gerar dois modelos lógicos. O objetivo dessa pesquisa é a primeira etapa do projeto, em outras palavras, o modelo responsável por inferir valores da EADS em um tweet.
 
-Visando o objetivo inicial, é necessário fazer a máquina coletar e acertar as previsões com qualquer tipo de dado (mesmo que fornecido por pessoas não capacitadas, no caso uma base anotada pelo próprio autor), sendo assim, será detalhado o sistema em si (coleta de dados e aprendizagem de maquina) e as metodologias utilizadas para desenvolve-lo.
+Visando o objetivo inicial, é necessário fazer a máquina coletar e acertar as previsões com qualquer tipo de dado (mesmo que fornecido por pessoas não capacitadas, no caso uma base anotada pelo próprio autor), sendo assim, será detalhado o sistema em si (coleta de dados e aprendizagem de maquina) e as metodologias utilizadas para desenvolvê-lo.
 
-Pode-se observar na Figura \ref{fig:tecnologias}, o sistema é divido em dois núcleos, o Dumont responsável por minerar e gerar toda a base de dados, e o 14BIS que será responsável pelas inteligências artificias.
+Pode-se observar na Figura \ref{fig:tecnologias} que o sistema é divido em dois núcleos, o Dumont responsável por coletar, pré-processar, minerar e gerar toda a base de dados com os atributos necessários e o 14BIS que será responsável pelos modelos de inteligências artificias. O projeto na linguagem GO está em um repositório separado por mera comodidade porém ele é responsavel por transformar dados em JSONs simplificados.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{imagens/tecnologias.png}
+    \includegraphics[width=1\textwidth]{imagens/tecnologias.png}
     \caption{Desenho apresentando os núcleos do projeto}
     \label{fig:tecnologias}
 \end{figure}
@@ -22,20 +22,20 @@ Existem basicamente 5 tecnologias que estão sendo utilizadas nesse projeto:
  \item Docker: Docker é uma ferramenta para infraestrutura, será utilizado para rodar a aplicação em \textit{containers} e facilitar o \textit{deploy}\footnote{Vindo do termo em inglês "lançar" é utilizado para o ato de colocar uma aplicação em ambiente de produção}.
 \end{itemize}
 
-Todo o código dos núcleos previamente demonstrados está disponível no GitHub. Para entender como funciona a plataforma de versionamento, que pode ser também utilizada para achar informações mais técnicas além de baixar o código basta seguir as instruções conforme o \autoref{app:git}. Além disso como mostrado ambos os núcleos utilizam Docker como base para executar as aplicações, isso devido ao resultado de tal abordagem reduzir alguns problemas possíveis em relação a ambiente de execução. É possível obter as informações necessárias para entendimento e instalação conforme o \autoref{app:docker}.
+Todo o código dos núcleos previamente demonstrados está disponível no GitHub. Para entender como funciona a plataforma de versionamento, que pode ser também utilizada para achar informações mais técnicas além de baixar o código, basta seguir as instruções conforme o \autoref{app:git}. Além disso, como mencionado ambos os núcleos utilizam Docker como base para executar as aplicações, isso devido ao resultado de tal abordagem reduzir alguns problemas possíveis em relação a ambiente de execução. É possível obter as informações necessárias para entendimento e instalação conforme o \autoref{app:docker}.
 
-Uma vez obtido conhecimento sobre os núcleos do projeto e suas tecnologias, é possível idealizar o fluxo completo e interação entre elas. Se observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do Twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco de dados.
+Uma vez obtido conhecimento sobre os núcleos do projeto e suas tecnologias, é possível idealizar o fluxo completo e interação entre elas. Ao observar a Figura \ref{fig:tcc_caso_de_uso}, notara que o Dumont ira utilizar da API do Twitter para coletar dados públicos, posteriormente esses dados serão processados e mutacionados a fim de gerar uma base de dados, por final essa base dados será salva em um banco de dados.
 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
-    \includegraphics[width=.5\textwidth]{imagens/tcc_caso_de_uso.png}
+    \includegraphics[width=.8\textwidth]{imagens/tcc_caso_de_uso.png}
     \caption{Diagrama de caso de uso do sistema}
     \label{fig:tcc_caso_de_uso}
 \end{figure}
 
 Para salvar os dados durante a coleta ou o pré-processamento será utilizado o MongoDB. O MongoDB  é um banco não relacional, ou seja, um banco que não tem \textit{transactions}\footnote{Simboliza uma atividade realizada em um banco relacional} e é baseado inteiramente em documentos. Diferente de um banco não relacional, os dados inseridos nesse tipo de banco não têm uma normalização ou qualquer tipo de padrão. No caso do Mongo a única identificação utilizada para interligar os documentos é a nomeada coleção\footnote{As Coleções servem para agrupar tipos especificos de documentos.}.
 
-Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão variar mais com o passar do desenvolvimento, pode-se notar na Figura \ref{fig:entities}, a visão inicial do que seria a estrutura de nossos documentos. Teremos duas coleções mais relevantes \textit{Tweet} e \textit{User} aqui ficaram armazenados os dados do Twitter, as demais estruturas são estruturas periféricas criadas para suportar o sistema de armazenamento de dados especialistas. Para isso existe a estrutura \textit{Answer} que serve para que os especialistas inserirem a possibilidade de um mapeamento de algum dos items da EADS para um tweet. Por final existem mais duas coleções a \textit{Specialist} que armazena os especialistas registrados no nosso sistema e o \textit{List} que é uma coleção auxiliar para agrupar uma quantidade de tweets tornando mais fácil para nossa aplicação apresenta-los aos especialista e coletar analise.
+Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão variar mais com o passar do desenvolvimento, pode-se notar na Figura \ref{fig:entities}, a visão inicial do que seria a estrutura dos documentos. Existem duas coleções mais relevantes \textit{Tweet} e \textit{User}, aqui ficaram armazenados os dados do Twitter, as demais estruturas são estruturas periféricas criadas para suportar o sistema de armazenamento de dados especialistas. Para isso existe a estrutura \textit{Answer} que serve para que os especialistas inserirem a possibilidade de um mapeamento de algum dos items da EADS para um tweet. Por final existem mais duas coleções a \textit{Specialist} que armazena os especialistas registrados no sistema e o \textit{List} que é uma coleção auxiliar para agrupar uma quantidade de tweets tornando mais fácil para a aplicação apresentá-los aos especialista e coletar análise.
 
 \begin{figure}[!h]
     \centering
@@ -44,9 +44,10 @@ Dentro do trabalho existem algumas estruturas mais fechadas e outras que irão v
     \label{fig:entities}
 \end{figure}
 
-Vale ressaltar que o objetivo é gerar uma base de conhecimento, e isso implica na ausência de profissionais agindo na base nesse primeiro trabalho. Além disso aplica-la a uma aprendizagem supervisionada e em seguida aplicar esse dado a uma não supervisionada. Logo a primeira etapa é adquirir o \textit{dataset} que será utilizado.
+Vale ressaltar que o objetivo é gerar uma base de conhecimento e isso implica na ausência de profissionais agindo na base nesse primeiro trabalho. Além disso aplicá-la a uma aprendizagem supervisionada e em seguida aplicar esse dado a uma não supervisionada. Logo a primeira etapa é adquirir o \textit{dataset} que será utilizado.
 
 \input{elementos-textuais/materiais-sections/coleta}
 \input{elementos-textuais/materiais-sections/preprocess}
 \input{elementos-textuais/materiais-sections/analise}
 \input{elementos-textuais/materiais-sections/especialista}
+\input{elementos-textuais/materiais-sections/inferencia}
